@@ -8,6 +8,7 @@ module.exports = {
   base: '/knowledge-database/',
   themeConfig: {
     searchPlaceholder: '输入进行搜索',
+    subSidebar: 'auto',
     nav: [
       {
         text: '文档指南',
