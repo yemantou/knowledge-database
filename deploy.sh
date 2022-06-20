@@ -11,4 +11,3 @@ git commit -m 'deploy'
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 git push -f git@github.com:yemantou/knowledge-database.git master:gh-pages
 cd -
-复制代码
