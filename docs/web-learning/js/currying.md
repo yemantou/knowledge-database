@@ -14,7 +14,7 @@ autoSort: 90
 ### 作用
 避免频繁调用具有相同参数的函数。  
 
-### 柯里化函数示例      
+### 通用的柯里化函数      
 ```js
 function currying (fn, ...args) {
   return (..._args) => {
