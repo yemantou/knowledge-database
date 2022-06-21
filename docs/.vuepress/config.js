@@ -31,6 +31,23 @@ module.exports = {
           }
         ]
       },
+      {
+        text: '计算机基础知识',
+        items: [
+          {
+            text: '计算机网络',
+            link: '/basic-knowledge/computer-networks/',
+          },
+          {
+            text: '数据结构',
+            link: '/basic-knowledge/data-structure/',
+          },
+          {
+            text: '算法',
+            link: '/basic-knowledge/algorithm/',
+          }
+        ]
+      },
       { 
         text: 'GitHub',
         link: 'https://github.com/yemantou/knowledge-database'
