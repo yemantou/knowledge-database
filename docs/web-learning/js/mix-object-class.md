@@ -53,4 +53,62 @@ Car重写了继承自父类的drive()方法，但是之后Car调用了inherited:
 ### 混入：模拟类的复制行为
 
 #### 显式混入  
-#### 隐式混入
+```js
+function mixin(sourceObj, targetObj) {
+  for (var key in sourceObj) {
+    // 只会在不存在的情况下进行复制
+    if (!(key in targetObj)) {
+      targetObj[key] = sourceObj[key]
+    }
+  }
+  return targetObj
+}
+
+var Vehicle = {
+  engines: 1;
+  ignition: function() {
+    console.log('Turning on my engine.');
+  },
+  drive: function() {
+    this.ignition();
+    console.log('Steering and moving forward！');
+  }
+};
+
+var Car = mixin(Vehicle, {
+  wheels: 4;
+  drive: function() {
+    Vehicle.drive.call(this);
+    console.log('Rolling on all' + this.wheels + 'wheels！');
+  }
+});
+```
+::: danger 警告
+js对于函数是进行引用的，所以修改函数实际会影响两个对象。  
+只在能够提高代码可读性的前提下使用显式混入，避免使用增加代码理解难度或者让对象关系更加复杂的模式。  
+:::
+
+#### 隐式混入  
+```js
+var Something = {
+  cool: function() {
+    this.greeting = 'Hello World';
+    this.count = this.count ? this.count + 1 : 1;
+  }
+};
+
+Something.cool();
+console.log(Something.greeting); // 'Hello World'
+console.log(Something.count); // 1
+
+var Another = {
+  cool: function() {
+    // 隐式把Something混入Another
+    Something.cool.call(this);
+  }
+}
+
+Another.cool();
+console.log(Another.greeting); // 'Hello World'
+console.log(Another.count); // 1（count不是共享状态）
+```
