@@ -24,6 +24,31 @@ autoSort: 92
 3. [[Prototype]]链上层存在foo属性，并且它是一个setter，那就一定会调用这个setter。  
    不会发生屏蔽，也不会重新定义foo这个setter
 
+### .constructor属性  
+.constructor属性只是Foo函数在声明时的默认属性  
+```js
+function Foo() {}
+
+Foo.prototype.constructor = Foo; // true
+
+var a = new Foo(); // a内部[[Prototype]]都会关联到Foo.prototype上
+a.constructor = Foo; // true .constructor引用同样被委托给了Foo.prototype，而Foo.prototype.constructor默认指向Foo
+```
+如果创建了一个新对象并替换了函数默认的．prototype对象引用，那么新对象并不会自动获得.constructor属性。  
+```js
+function Foo() {}
+
+Foo.prototype = {};
+
+var a1 = new Foo();
+a1.constructor = Foo; // false
+a1.constructor = Object; // true
+```
+::: tip 提示
+a1并没有．constructor属性，所以它会委托[[Prototype]]链上的Foo. prototype。但是这个对象也没有．constructor属性（不过默认的Foo.prototype对象有这个属性！），所以它会继续委托，这次会委托给委托链顶端的Object.prototype。这个对象有．constructor属性，指向内置的Object(..)函数。 
+:::
+
+
 ### （原型）继承  
 ```js
 function Foo(name) {
@@ -126,9 +151,14 @@ if (!Object.create) {
 
 ### 小结   
 #### prototype、__proto__与constructor  
-1. __proto__和constructor属性是对象所独有的；prototype属性是函数所独有的，因为函数也是一种对象，所以函数也拥有__proto__和constructor属性；  
+例：  
+```js
+function Foo() {}; 
+let f1 = new Foo();
+```
+1. __proto__和constructor属性是对象所独有的；prototype属性是函数所独有的，因为函数也是一种对象，所以函数也拥有__proto__和constructor属性；函数的__proto__指向了Function.prototype；  
 2. __proto__属性的作用就是当访问一个对象的属性时，如果该对象内部不存在这个属性，那么就会去它的__proto__属性所指向的那个对象（父对象）里找，一直找，直到__proto__属性的终点null，再往上找就相当于在null上取值，会报错。通过__proto__属性将对象连接起来的这条链路即我们所谓的原型链；  
 3. prototype属性的作用就是让该函数所实例化的对象们都可以找到公用的属性和方法，即f1.__proto__ === Foo.prototype；  
 4. constructor属性的含义就是指向该对象的构造函数，所有函数（此时看成对象了）最终的构造函数都指向Function。  
 
-![An image](@assets/img/prototype-constructor.png)
+![prototype、__proto__与constructor](@assets/img/prototype-constructor.png)
