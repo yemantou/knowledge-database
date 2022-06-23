@@ -74,6 +74,11 @@ module.exports = {
     ]
   ],
   configureWebpack: {
+    resolve: {
+      alias: {
+        '@assets': '/docs/.vuepress/assets'
+      }
+    },
     node: {
       global: true,
       process: true
