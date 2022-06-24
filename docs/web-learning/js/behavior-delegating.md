@@ -271,6 +271,23 @@ var LoginController = {
 
 ### 内省  
 内省就是检查实例的类型。类实例的内省主要目的是通过创建方式来判断对象的结构和功能。  
+```js
+var Foo = {};
+
+// 让Foo和Bar互相关联
+var Bar = Object.create(Foo);
+
+// 让b1关联到Foo和Bar
+var b1 = Object.create(Bar);
+
+// 使用对象关联时，所有的对象都是通过[[prototype]]委托互相关联，内省方法如下
+Foo.isPrototypeOf(Bar); // true 检查Foo是否在Bar的原型链中
+Object.getPrototypeOf(Bar) === Foo; // true getPrototypeOf方法返回指定对象的原型（内部[[Prototype]]属性的值）
+
+Foo.isPrototypeOf(b1); // true
+Bar.isPrototypeOf(b1); // true
+Object.getPrototypeOf(Bar) === Bar; // true
+```  
 
 ### class陷阱 
 - class基本上只是现有[[Prototype]]（委托！）机制的一种语法糖；
