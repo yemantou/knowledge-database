@@ -49,6 +49,19 @@ module.exports = {
         ]
       },
       { 
+        text: '笔记',
+        items: [
+          {
+            text: '组件',
+            link: '/note/components/',
+          },
+          {
+            text: 'JS',
+            link: '/note/js/',
+          }
+        ]
+      },
+      { 
         text: 'GitHub',
         link: 'https://github.com/yemantou/knowledge-database'
       },
