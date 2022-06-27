@@ -28,6 +28,10 @@ module.exports = {
           {
             text: 'CSS',
             link: '/web-learning/css/',
+          },
+          {
+            text: 'Vue',
+            link: '/web-learning/vue/',
           }
         ]
       },
