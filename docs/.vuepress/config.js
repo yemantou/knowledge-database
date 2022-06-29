@@ -23,15 +23,15 @@ module.exports = {
         items: [
           {
             text: 'JS',
-            link: '/web-learning/js/',
+            link: '/web-learning/js/'
           },
           {
             text: 'CSS',
-            link: '/web-learning/css/',
+            link: '/web-learning/css/'
           },
           {
             text: 'Vue',
-            link: '/web-learning/vue/',
+            link: '/web-learning/vue/'
           }
         ]
       },
@@ -40,15 +40,15 @@ module.exports = {
         items: [
           {
             text: '计算机网络',
-            link: '/basic-knowledge/computer-networks/',
+            link: '/basic-knowledge/computer-networks/'
           },
           {
             text: '数据结构',
-            link: '/basic-knowledge/data-structure/',
+            link: '/basic-knowledge/data-structure/'
           },
           {
             text: '算法',
-            link: '/basic-knowledge/algorithm/',
+            link: '/basic-knowledge/algorithm/'
           }
         ]
       },
@@ -56,12 +56,12 @@ module.exports = {
         text: '笔记',
         items: [
           {
-            text: '组件',
-            link: '/note/components/',
+            text: '前端学习笔记',
+            link: '/note/web/'
           },
           {
-            text: 'JS',
-            link: '/note/js/',
+            text: '后端学习笔记',
+            link: '/note/backend/'
           }
         ]
       },
