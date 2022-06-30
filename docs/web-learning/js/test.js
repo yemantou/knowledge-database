@@ -1,16 +1,11 @@
-function foo (x) {
-  x.a = 4;
-  console.log(x); // [ 1, 2, 3, 4 ]
+var a = new String('abc');
 
-  delete x.a
-  x.a = 5
-  console.log(x);
-}
+console.log(typeof a); // object
 
-var a = {
-  a: 1
-};
+console.log(a instanceof String); // true
 
-foo(a);
+const res = Object.prototype.toString.call(a);
 
-console.log(a); // [ 4, 5, 6, 7 ]
+console.log(res); // [object String]
+
+
