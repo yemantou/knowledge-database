@@ -77,3 +77,14 @@ a.valueOf(); // abc
 - Array(..)  
   构造函数Array(..)不要求必须带new关键字，会被自动补上，Array(1,2,3)和new Array(1,2,3)的效果是一样的。  
   Array构造函数只带一个数字参数的时候，该参数会被作为数组的预设长度（length），而非只充当数组中的一个元素。  
+  永远不要创建和使用空单元数组：Array(3)会创建一个length=3的空数组。
+- Object(..)、Function(..)和RegExp(..)  
+  除非万不得已，否则尽量不要使用Object(..)/Function(..)/RegExp(..)。
+  RegExp(..)有时还是很有用的，比如动态定义正则表达式时：  
+  ```js
+  var name = 'Kyle';
+  var namePattern = new RegExp('\\b(? :' + name + ')+\\b', 'ig');
+  var matches = someText.match(namePattern);
+  ```  
+
+

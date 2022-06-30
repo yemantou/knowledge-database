@@ -1,11 +1,8 @@
-var a = new String('abc');
+var a = '42';
+var b = '42px';
 
-console.log(typeof a); // object
+console.log(Number(a)); // 42
+console.log(parseInt(a)); // 42
 
-console.log(a instanceof String); // true
-
-const res = Object.prototype.toString.call(a);
-
-console.log(res); // [object String]
-
-
+console.log(Number(b)); // NAN
+console.log(parseInt(b)); // 42
