@@ -1,8 +1,4 @@
-var a = '42';
-var b = '42px';
+var a = [1, 2];
+var b = [3, 4];
 
-console.log(Number(a)); // 42
-console.log(parseInt(a)); // 42
-
-console.log(Number(b)); // NAN
-console.log(parseInt(b)); // 42
+console.log(a + b);
