@@ -1,4 +1,9 @@
-var a = [1, 2];
-var b = [3, 4];
+var i = 2;
 
-console.log(a + b);
+Number.prototype.valueOf = function () {
+  return i++;
+};
+
+var a = new Number(42)
+
+console.log(a == 2 && a == 3);
