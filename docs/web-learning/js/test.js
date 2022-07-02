@@ -1,9 +1,4 @@
-var i = 2;
+// A
+ajax('..', function() {
 
-Number.prototype.valueOf = function () {
-  return i++;
-};
-
-var a = new Number(42)
-
-console.log(a == 2 && a == 3);
+})
