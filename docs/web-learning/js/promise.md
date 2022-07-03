@@ -115,3 +115,97 @@ Promise.resolve(tool(22)).then(
 Promise并不只是一个单步执行this-then-that操作的机制，可以把多个Promise连接到一起以表示一系列异步步骤。
 - 每次你对Promise调用then(..)，它都会创建并返回一个新的Promise，我们可以将其链接起来；
 - 不管从then(..)调用的完成回调（第一个参数）返回的值是什么，它都会被自动设置为被链接Promise（第一点中的）的完成。  
+错误可以继续沿着Promise链传播下去，直到遇到显式定义的拒绝处理函数。  
+
+使链式流程控制可行的Promise固有特性：  
+- 调用Promise的then(..)会自动创建一个新的Promise从调用返回。
+- 在完成或拒绝处理函数内部，如果返回一个值或抛出一个异常，新返回的（可链接的）Promise就相应地决议。
+- 如果完成或拒绝处理函数返回一个Promise，它将会被展开，这样一来，不管它的决议值是什么，都会成为当前then(..)返回的链接Promise的决议值。  
+
+术语：决议（resolve）、完成（fulfill）和拒绝（reject）  
+
+### 错误处理
+try..catch很好，但是无法跨异步操作工作。  
+Promise没有采用流行的error-first回调设计风格，而是使用了分离回调（split-callback）风格。一个回调用于完成情况，一个回调用于拒绝情况。  
+#### 处理未捕获的情况
+下面这种错误情况如何处理呢？
+```js
+var p = new Promise(function(resolve, reject){
+  resolve(42);
+});
+
+p.then(
+  function fulfilled(msg) {
+    foo.bar();
+    console.log(msg); // 永远不会到达此处
+  },
+  function rejected(err) {
+    // 永远不会到达此处
+  }
+);
+```
+有一些Promise库增加了一些方法：注册一个类似于“全局未处理拒绝”处理函数的东西，这样就不会抛出全局错误，而是调用这个函数。    
+它们辨识未捕获错误的方法是定义一个某个时长的定时器，比如3秒钟，在拒绝的时刻启动。如果Promise被拒绝，而在定时器触发之前都没有错误处理函数被注册，那它就会假定你不会注册处理函数，进而就是未被捕获错误。（并不太建议使用）     
+
+### Promise模式
+1. Promise.all([ .. ])
+   传给Promise.all([ .. ])的数组中的值可以是Promise、thenable，甚至是立即值。就本质而言，列表中的每个值都会通过Promise. resolve(..)过滤，以确保要等待的是一个真正的Promise，所以立即值会被规范化为为这个值构建的Promise。如果数组是空的，主Promise就会立即完成。  
+   从Promise.all([ .. ])返回的主promise在且仅在所有的成员promise都完成后才会完成。如果这些promise中有任何一个被拒绝的话，主Promise.all([ .. ])promise就会立即被拒绝，并丢弃来自其他所有promise的全部结果。  
+2. Promise.race([ .. ])（只响应“第一个跨过终点线的Promise”，而抛弃其他Promise。）  
+   一旦有任何一个Promise决议为完成，Promise.race([ .. ])就会完成；一旦有任何一个Promise决议为拒绝，它就会拒绝。  
+   如果传入了一个空数组，主race([..]) Promise永远不会决议，而不是立即决议。  
+3. all([ .. ])和race([ .. ])的变体（有些Promise抽象库提供了这些支持，但也可以使用Promise、race([ .. ])和all([ .. ])这些机制，你自己来实现它们）：
+   - none([ .. ])  
+     这个模式类似于all([ .. ])，不过完成和拒绝的情况互换了。所有的Promise都要被拒绝，即拒绝转化为完成值，反之亦然。  
+   - any([ .. ])  
+     这个模式与all([ .. ])类似，但是会忽略拒绝，所以只需要完成一个而不是全部。  
+   - first([ .. ])   
+     这个模式类似于与any([ .. ])的竞争，即只要第一个Promise完成，它就会忽略后续的任何拒绝和完成。  
+   - last([ .. ])
+     这个模式类似于first([ .. ])，但却是只有最后一个完成胜出。  
+#### 并发迭代
+有些时候会需要在一列Promise中迭代，并对所有Promise都执行某个任务，非常类似于对同步数组可以做的那样（比如forEach(..)、map(..)、some(..)和every(..)）。    
+例如map(..)，接收一个数组的值（可以是Promise或其他任何值），外加要在每个值上运行一个函数（任务）作为参数。map(..)本身返回一个promise，其完成值是一个数组，该数组（保持映射顺序）保存任务执行之后的异步完成值：    
+```js
+if (!Promise.map) {
+  Promise.map = function(vals, cb) {
+    // 一个等待列表所有promise的新promise
+    return Promise.all(
+      // 一般数组map(..)把值数组转换为promise数组
+      vals.map(function(val) {
+        // 用val异步map之后决议（resolve）的新promise替换val
+        return new Promise(function(resolve) {
+          cb(val, resolve);
+        });
+      })
+    ); 
+  };
+}
+```
+
+### Promise API概述
+#### new Promise(..)构造器
+Promise(..)必须和new一起使用，并且必须提供一个函数回调：  
+```js
+var p = new Promise(function(resolve, reject) {
+  // resolve(..)用于决议/完成这个promise
+  // reject(..)用于拒绝这个promise
+})
+```
+#### Promise.resolve(..)和Promise.reject(..)
+- Promise.reject(..)  
+  创建一个已被拒绝的Promise的快捷方式是使用Promise.reject(..)。   
+- Promise.resolve(..)  
+  Promise.resolve(..)常用于创建一个已完成的Promise，使用方式与Promise.reject(..)类似。但是，Promise.resolve(..)也会展开thenable值。  
+  如果传入的是真正的Promise, Promise.resolve(..)什么都不会做，只会直接把这个值返回。  
+#### then(..)和catch(..)
+Promise决议之后，立即会调用这两个处理函数之一，但不会两个都调用，而且总是异步调用。  
+::: tip 提示
+then 的第二个参数捕获 Promise 的异常，catch 除此之外还会捕获 then 的第一个参数执行时抛出的异常：   
+- 当Promise是reject时，catch捕获reject
+- 当Promise是resolve时，catch捕获.then中抛出的异常
+:::
+- then(..)  
+  then(..)接受一个或两个参数：第一个用于完成回调，第二个用于拒绝回调。  
+- catch(..)   
+  catch(..)只接受一个拒绝回调作为参数，并自动替换默认完成回调，它等价于then(null, ..)。  

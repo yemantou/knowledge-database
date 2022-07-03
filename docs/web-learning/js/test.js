@@ -1,13 +1,11 @@
-// 不要只是直接这样使用（假设工具为tool(..)）
-tool(22).then(
-  function(v) {
-    console.log(v);
-  }
-);
+const p = new Promise(function(resolve, reject) {
+  resolve(21);
+})
 
-// 应该这样使用
-Promise.resolve(tool(22)).then(
-  function(v) {
-    console.log(v);
+p.then((data) => {
+  // throw('wdwddwdw');
+  console.log('llll', data);
+}).catch((err, err1) => {
+  console.log('catch1', err, err1);
   }
-);
+)
