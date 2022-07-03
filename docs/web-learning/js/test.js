@@ -1,5 +1,5 @@
 const p = new Promise(function(resolve, reject) {
-  resolve(21);
+  resolvess(21);
 })
 
 p.then((data) => {
