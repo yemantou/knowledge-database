@@ -1,9 +1,11 @@
-function* foo (x, y) {
-  return x * y;
+function* foo (x) {
+  var y = x * (yield);
+  return y;
 }
 
-var it = foo(6, 7);
+var it = foo(6);
 
-var res = it.next();
+it.next();
 
+var res = it.next(7);
 console.log(res.value); // 42

@@ -48,3 +48,17 @@ console.log(res.value); // 42
 创建了一个迭代器对象，把它赋给了一个变量it，用于控制生成器＊foo(..)。然后调用it.next()，指示生成器＊foo(..)从当前位置开始继续运行，停在下一个yield处或者直到生成器结束。next(..)调用的结果是一个对象，它有一个value属性，持有从＊foo(..)返回的值（如果有的话）。    
 1. 迭代消息传递
    生成器还提供了更强大更引人注目的内建消息输入输出能力，通过yield和next(..)实现。  
+   ```js
+   function* foo (x) {
+     var y = x * (yield);
+     return y;
+   }
+
+   var it = foo(6);
+
+   it.next();
+
+   var res = it.next(7);
+   console.log(res.value); // 42
+   ```
+   // 第一次next()在yield处暂停，第二次next(7)将7传入作为yield表达式的结果
