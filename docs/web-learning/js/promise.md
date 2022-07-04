@@ -209,3 +209,79 @@ then 的第二个参数捕获 Promise 的异常，catch 除此之外还会捕获
   then(..)接受一个或两个参数：第一个用于完成回调，第二个用于拒绝回调。  
 - catch(..)   
   catch(..)只接受一个拒绝回调作为参数，并自动替换默认完成回调，它等价于then(null, ..)。  
+then(..)和catch(..)也会创建并返回一个新的promise，这个promise可以用于实现Promise链式流程控制。  
+#### Promise.all([ .. ])和Promise.race([ .. ])
+Promise.all([ .. ])和Promise.race([ .. ])都会创建一个Promise作为它们的返回值。这个promise的决议完全由传入的promise数组控制。   
+Promise.all([ .. ])：所有人都到齐了才开门。   
+Promise.race([ .. ])：第一个到达者打开门闩通过。  
+::: danger 警告
+向Promise.all([ .. ])传入空数组，它会立即完成，但Promise. race([ .. ])会挂住，且永远不会决议。  
+:::
+
+### Promise局限性
+#### 顺序错误处理  
+Promise的设计局限性（具体来说，就是它们链接的方式）造成了一个让人很容易中招的陷阱，即Promise链中的错误很容易被无意中默默忽略掉。  
+例如一个没有错误处理函数的Promise链，链中任何地方的任何错误都会在链中一直传播下去，直到被查看（通过在某个步骤注册拒绝处理函数）。  
+#### 单一值  
+Promise只能有一个完成值或一个拒绝理由。在更复杂的场景中，这是一种局限。  
+一般的建议是构造一个值封装（比如一个对象或数组）来保持这样的多个信息。这个解决方案可以起作用，但要在Promise链中的每一步都进行封装和解封，就十分丑陋和笨重了。  
+1. 分裂值  
+   可以/应该把问题分解为两个或更多Promise的信号。例如有一个工具foo(..)，它可以异步产生两个值（x和y）：   
+   ```js
+    function getY(x) {
+      return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+          resolve((3 * x) - 1);
+        }, 100);
+      });
+    }
+
+    function foo(bar, baz) {
+      var x = bar * baz;
+
+      return getY(x).then(
+        function(y) {
+          // 返回封装两个值的数组
+          return [x, y]
+        }
+      )
+    }
+
+    foo(10, 20).then(
+      function(msgs) {
+        var x = msgs[0];
+        var y = msgs[1];
+
+        console.log(x, y); // 200 599
+      }
+    )
+   ```
+   可以把每个值封装到它自己的promise：  
+   ```js
+    function foo(bar, baz) {
+      var x = bar * baz;
+      // 返回两个promise
+      retrun [
+        Promise.resolve(x),
+        getY(x)
+      ];
+    }
+
+    Promise.all(foo(10, 20)).then(
+      function(msgs) {
+        var x = msgs[0];
+        var y = msgs[1];
+
+        console.log(x, y); // 200 599
+      }
+    );
+   ```
+   这种方法更符合Promise的设计理念。如果以后需要重构代码把对x和y的计算分开，这种方法就简单得多。由调用代码来决定如何安排这两个promise，而不是把这种细节放在foo(..)内部抽象，这样更整洁也更灵活。  
+#### 单决议
+Promise最本质的一个特征是：Promise只能被决议一次（完成或拒绝）。  
+#### 惯性
+如果已经有大量的基于回调的代码，那么保持编码风格不变要简单得多。  
+自己实现一个支持Promise而不是基于回调的Ajax工具，可以称之为request(..)：  
+```js
+
+```
