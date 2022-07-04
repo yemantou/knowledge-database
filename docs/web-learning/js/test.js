@@ -1,12 +1,12 @@
 if (!Promise.wrap) {
-  Promise.wrap = function(fn) {
-    return function() {
+  Promise.wrap = function (fn) {
+    return function () {
       console.log('fn-arguments', fn, arguments);
       var args = [].slice.call(arguments);
-      return new Promise(function(resolve, reject) {
+      return new Promise(function (resolve, reject) {
         fn.apply(
           null,
-          args.concat(function(err, v) {
+          args.concat(function (err, v) {
             if (err) {
               reject(err);
             } else {
@@ -20,7 +20,7 @@ if (!Promise.wrap) {
 }
 
 // 模拟的一个ajax请求
-const ajax = function(url, callback) {
+const ajax = function (url, callback) {
   setTimeout(() => {
     callback && callback(url)
   }, 2000)
@@ -35,10 +35,10 @@ ajax('http://url.1/', (data) => {
 const request = Promise.wrap(ajax);
 
 request('http://url.2/').then(
-  function(data) {
+  function (data) {
     console.log('data2', data);
   },
-  function(err) {
+  function (err) {
     console.log('err', err);
   }
 )
