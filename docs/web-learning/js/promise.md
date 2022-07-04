@@ -283,5 +283,24 @@ Promise最本质的一个特征是：Promise只能被决议一次（完成或拒
 如果已经有大量的基于回调的代码，那么保持编码风格不变要简单得多。  
 自己实现一个支持Promise而不是基于回调的Ajax工具，可以称之为request(..)：  
 ```js
-
+if (!Promise.wrap) {
+  Promise.wrap = function(fn) {
+    return function() {
+      var args = [].slice.call(arguments);
+      return new Promise(function(resolve, reject) {
+        fn.apply(
+          null,
+          args.concat(function(err, v) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(v);
+            }
+          })
+        );
+      });
+    };
+  };
+}
 ```
+接受一个函数，这个函数需要一个error-first风格的回调作为第一个参数，并返回一个新的函数。返回的函数自动创建一个Promise并返回，并替换回调，连接到Promise完成或拒绝。  

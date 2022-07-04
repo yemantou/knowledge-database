@@ -1,17 +1,44 @@
-function foo(bar, baz) {
-  var x = bar * baz;
-  // 返回两个promise
-  retrun [
-    Promise.resolve(x),
-    getY(x)
-  ];
+if (!Promise.wrap) {
+  Promise.wrap = function(fn) {
+    return function() {
+      console.log('fn-arguments', fn, arguments);
+      var args = [].slice.call(arguments);
+      return new Promise(function(resolve, reject) {
+        fn.apply(
+          null,
+          args.concat(function(err, v) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(v);
+            }
+          })
+        );
+      });
+    };
+  };
 }
 
-Promise.all(foo(10, 20)).then(
-  function(msgs) {
-    var x = msgs[0];
-    var y = msgs[1];
+// 模拟的一个ajax请求
+const ajax = function(url, callback) {
+  setTimeout(() => {
+    callback && callback(url)
+  }, 2000)
+}
 
-    console.log(x, y); // 200 599
+// 使用回调的方式
+ajax('http://url.1/', (data) => {
+  console.log('data', data);
+})
+
+// 将模拟的ajax请求转化为Promise
+const request = Promise.wrap(ajax);
+
+request('http://url.2/').then(
+  function(data) {
+    console.log('data2', data);
+  },
+  function(err) {
+    console.log('err', err);
   }
-);
+)
