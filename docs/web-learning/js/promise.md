@@ -284,23 +284,54 @@ Promise最本质的一个特征是：Promise只能被决议一次（完成或拒
 自己实现一个支持Promise而不是基于回调的Ajax工具，可以称之为request(..)：  
 ```js
 if (!Promise.wrap) {
-  Promise.wrap = function(fn) {
-    return function() {
-      var args = [].slice.call(arguments);
-      return new Promise(function(resolve, reject) {
+  Promise.wrap = function (fn) {
+    return function () {
+      var args = [...arguments];
+      return new Promise(function (resolve, reject) {
+        const callback = function (err, data) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(data);
+          }
+        };
         fn.apply(
           null,
-          args.concat(function(err, v) {
-            if (err) {
-              reject(err);
-            } else {
-              resolve(v);
-            }
-          })
+          args.concat(callback)
         );
       });
     };
   };
 }
+
+// 模拟的一个ajax请求
+const ajax = function (url, callback) {
+  setTimeout(() => {
+    callback && callback(null, '成功')
+  }, 2000)
+}
+
+// 使用回调的方式
+ajax('http://url.1/', (err, data) => {
+  console.log(data); // 成功
+})
+
+// 将模拟的ajax请求转化为Promise
+const request = Promise.wrap(ajax);
+
+request('http://url.2/').then(
+  function (data) {
+    console.log(data); // 成功
+  },
+  function (err) {
+    console.log(err);
+  }
+)
 ```
 接受一个函数，这个函数需要一个error-first风格的回调作为第一个参数，并返回一个新的函数。返回的函数自动创建一个Promise并返回，并替换回调，连接到Promise完成或拒绝。  
+把需要回调的函数封装为支持Promise的函数，这个动作有时被称为“提升”或“Promise工厂化”。  
+#### 无法取消的Promise
+一旦创建了一个Promise并为其注册了完成和/或拒绝处理函数，如果出现某种情况使得这个任务悬而未决的话，你也没有办法从外部停止它的进程。  
+这可能会使Promise的一个消费者或观察者影响其他消费者查看这个Promise。这违背了未来值的可信任性（外部不变性），但更坏的是，这是“远隔作用”。实际上会导致你重陷与使用回调同样的噩梦。  
+集合在一起的Promise构成的链，可称之为一个“序列”，就是一个流程控制的表达，因此将取消定义在这个抽象层次上是合适的。  
+单独的Promise不应该可取消，但是取消一个序列是合理的，因为你不会像对待Promise那样把序列作为一个单独的不变值来传送。  
