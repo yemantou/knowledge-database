@@ -1,37 +1,30 @@
-var something = (function() {
-  var nextVal;
+const ajax = function (url, callback) {
+  setTimeout(() => {
+    callback && callback(null, `${url}，请求成功`)
+  }, 2000)
+}
 
-  return {
-    // for..of循环需要
-    [Symbol.iterator]: function() { return this; },
-
-    // 标准迭代器接口方法
-    next: function() {
-      if (nextVal === undefined) {
-        nextVal = 1;
-      } else {
-        nextVal = (3 * nextVal) + 6;
-      }
-
-      return { done: false, value: nextVal }
+function foo (x, y) {
+  ajax(`http://url.1?x=${x}&y=${y}`, function (err, data) {
+    if (err) {
+      // 向*main()抛出一个错误
+      it.throw(err);
+    } else {
+      // 用收到的data来恢复*main()
+      it.next(data);
     }
-  };
-})()
+  });
+}
 
-// var res1 = something.next()
-// var res2 = something.next()
-// var res3 = something.next()
-// var res4 = something.next()
-
-// console.log(res1);
-// console.log(res2);
-// console.log(res3);
-// console.log(res4);
-
-for (var item of something) {
-  console.log(item);
-
-  if (item > 500) {
-    break;
+function* main () {
+  try {
+    var text = yield foo(11, 31)
+    console.log('success', text);
+  } catch (err) {
+    console.log('error', err);
   }
 }
+
+var it = main();
+
+it.next()

@@ -164,3 +164,161 @@ for (var item of something) {
 ```
 for..of循环在每次迭代中自动调用next()，它不会向next()传入任何值，并且会在接收到done:true之后自动停止。这对于在一组数据上循环很方便。  
 #### iterable
+iterable（可迭代）：指一个包含可以在其值上迭代的迭代器的对象。  
+从一个iterable中提取迭代器的方法是：iterable必须支持一个函数，其名称是专门的ES6符号值Symbol.iterator。  
+#### 生成器迭代器
+可以把生成器看作一个值的生产者，我们通过迭代器接口的next()调用一次提取出一个值。  
+严格说来，生成器本身并不是iterable，尽管非常类似——当你执行一个生成器，就得到了一个迭代器。  
+在JS程序中使用while..true循环是非常糟糕的，如果没有break或者return的话，会同步地无限循环，并阻塞和锁住浏览器UI。  
+如果在生成器中有yield的话，使用这样的循环就完全没有问题。因为生成器会在每次迭代中暂停，通过yield返回到主程序或事件循环队列中。
+因为生成器会在每个yield处暂停，函数＊something()的状态（作用域）会被保持，即意味着不需要闭包在调用之间保持变量状态。  
+通过for..of循环使用我们雕琢过的新的＊something()生成器：  
+```js
+function* something () {
+  var nextVal;
+
+  while (true) {
+    if (nextVal === undefined) {
+      nextVal = 1;
+    } else {
+      nextVal = (3 * nextVal) + 6
+    }
+
+    yield nextVal;
+  }
+}
+
+for (var item of something()) {
+  console.log(item);
+
+  // 不要死循环
+  if (item > 500) {
+    break;
+  }
+} 
+```
+两个问题：  
+1. 为什么不能用for (var v of something)  
+   因为这里的something是生成器，并不是iterable。我们需要调用something()来构造一个生产者供for..of循环迭代。  
+2. something()调用产生一个迭代器，但for..of循环需要的是一个iterable  
+   生成器的迭代器也有一个Symbol.iterator函数，基本上这个函数做的就是return this，和我们前面定义的iterable something一样。换句话说，生成器的迭代器也是一个iterable！  
+#### 停止生成器
+在上面的例子中看起来＊something()生成器的迭代器实例在循环中的break调用之后就永远留在了挂起状态。但其实for..of循环的“异常结束”（也就是“提前终止”），通常由break、return或者未捕获异常引起，会向生成器的迭代器发送一个信号使其终止。  
+向一个迭代器手工发送停止信号：  
+1. try..finally，for..of循环内的break会触发finally语句  
+   ```js
+   function* something () {
+     try {
+       var nextVal;
+
+       while (true) {
+         if (nextVal === undefined) {
+           nextVal = 1;
+         } else {
+           nextVal = (3 * nextVal) + 6
+         }
+
+         yield nextVal;
+       }
+     } finally {
+       console.log('cleaning up!');
+     }
+   }
+   ```
+2. 外部通过return(..)手工终止  
+   ```js
+   function* something () {
+     var nextVal;
+
+     while (true) {
+       if (nextVal === undefined) {
+         nextVal = 1;
+       } else {
+         nextVal = (3 * nextVal) + 6
+       }
+
+       yield nextVal;
+     }
+   }
+
+   var it = something();
+
+   for (var item of it) {
+     console.log(item);
+
+     // 不要死循环
+     if (item > 500) {
+       console.log(it.return('停止').value);
+     }
+   }
+   // 1
+   // 9
+   // 33
+   // 105
+   // 321
+   // 969
+   // 停止
+   ```
+   调用it.return(..)之后，它会立即终止生成器，这当然会运行finally语句。另外，它还会把返回的value设置为传入return(..)的内容，这也就是"停止"被传出去的过程。  
+
+### 异步迭代生成器
+生成器与异步编码模式及解决回调问题的关系：  
+使用回调：  
+```js
+const ajax = function (url, callback) {
+  setTimeout(() => {
+    callback && callback(null, `${url}，请求成功`)
+  }, 2000)
+}
+
+function foo (x, y, callback) {
+  ajax(`http://url.1?x=${x}&y=${y}`, callback);
+}
+
+foo(11, 31, function (err, text) {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log(text); // http://url.1?x=11&y=31，请求成功
+  }
+});
+```  
+通过生成器来表达同样的任务流程控制的实现：  
+```js
+const ajax = function (url, callback) {
+  setTimeout(() => {
+    callback && callback(null, `${url}，请求成功`)
+  }, 2000)
+}
+
+function foo (x, y) {
+  ajax(`http://url.1?x=${x}&y=${y}`, function (err, data) {
+    if (err) {
+      // 向*main()抛出一个错误
+      it.throw(err);
+    } else {
+      // 用收到的data来恢复*main()
+      it.next(data);
+    }
+  });
+}
+
+function* main () {
+  try {
+    var text = yield foo(11, 31)
+    console.log('success', text);
+  } catch (err) {
+    console.log('error', err);
+  }
+}
+
+var it = main();
+
+it.next()
+```
+上面例子最重要的一段代码：  
+```js
+var text = yield foo(11, 31)
+console.log('success', text);
+```
+`text`接受到的是`it.next(data);`的返回
