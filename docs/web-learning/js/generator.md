@@ -305,7 +305,7 @@ function foo (x, y) {
 
 function* main () {
   try {
-    var text = yield foo(11, 31)
+    var text = yield foo(11, 31);
     console.log('success', text);
   } catch (err) {
     console.log('error', err);
@@ -322,3 +322,100 @@ var text = yield foo(11, 31)
 console.log('success', text);
 ```
 `text`接受到的是`it.next(data);`的返回
+yield暂停也得生成器能够捕获错误。生成器yield暂停的特性意味着我们不仅能够从异步函数调用得到看似同步的返回值，还可以同步捕获来自这些异步函数调用的错误！  
+
+### 生成器+Promise
+ES6中最完美的世界就是生成器（看似同步的异步代码）和Promise（可信任可组合）的结合。  
+支持Promise的foo(..)和生成器＊main()：  
+```js
+// foo返回的是一个promise
+function foo(x, y) {
+  return request(`http://url.1/?x=${x}&y=${y}`);
+}
+
+function* main() {
+  try {
+    var text = yield foo(11, 31);
+    console.log('成功', text);
+  } catch (err) {
+    console.log('失败', err);
+  }
+}
+
+var it = main();
+
+var p = it.next().value
+
+p.then(
+  function(data) {
+    it.next(data);
+  },
+  function(err) {
+    it.throw(err);
+  }
+)
+```
+#### 支持Promise的Generator Runner
+专门设计用来以我们前面展示的方式运行Promise-yielding生成器的工具，有几个Promise抽象库提供了这样的工具，包括asynquence库及其runner(..)。  
+这里我们自己定义一个独立工具，叫作run(..)：
+```js
+function run(generator) {
+  var args = [].slice.call(arguments, 1); // 获取所有除了generator函数的所有实参
+  var it;
+
+  // 在当前上下文中初始化生成器
+  it = generator.apply(this, args);
+
+  // 返回一个promise用于生成器完成
+  return Promise.resolve().then(
+    function handleNext(value) {
+      // 对下一个yield出的值运行
+      var next = it.next(value);
+      console.log('value', value);
+      console.log('next', next);
+
+      return (function handleResult(next) {
+        console.log('handleResult', next);
+        // 判断生成器是否运行完毕
+        if (next.done) {
+          // 运行完毕返回值
+          return next.value
+        } else {
+          // 未运行完毕继续运行
+          return Promise.resolve(next.value).then(
+            // 成功就恢复异步循环，把决议的值发回生成器
+            handleNext,
+
+            // 如果value是被拒绝的promise，就把错误传回生成器进行出错处理
+            function handleError(err) {
+              return Promise.resolve(
+                it.throw(err)
+              ).then(handleResult);
+            }
+          );
+        }
+      })(next);
+    }
+  );
+}
+
+
+function* main() {
+  try {
+    var text = yield 11;
+    console.log('成功', text);
+  } catch (err) {
+    console.log('失败', err);
+  }
+}
+
+run(main);
+
+// value undefined
+// next { value: 11, done: false }
+// handleResult { value: 11, done: false }
+// 成功 11
+// value 11
+// next { value: undefined, done: true }
+// handleResult { value: undefined, done: true }
+```
