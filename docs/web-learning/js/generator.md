@@ -477,7 +477,7 @@ function* foo () {
   var p1 = ajax('http://url.1');
   var p2 = ajax('http://url.2');
 
-  // 等待两个promise决议
+  // 等待两个promise决议（其实这里还是先完成p1再完成p2，但是p1和p2在定义的时候就开始执行了，这里几乎等于立即执行）
   var r1 = yield p1;
   var r2 = yield p2;
 
@@ -488,3 +488,27 @@ function* foo () {
 
 run(foo);
 ```
+
+### 生成器委托
+从一个生成器调用另一个生成器，使用辅助函数run(..)：  
+```js
+function* foo () {
+  var r2 = yield ajax('http://url.2');
+  var r3 = yield ajax(`http://url.1/?v=${r2}`);
+
+  return r3;
+}
+
+function* bar () {
+  var r1 = yield ajax('http://url.1');
+
+  // 通过run(..)“委托”给*foo(..)
+  var r3 = yield run(foo);
+
+  console.log(r3);
+}
+
+run(bar);
+```
+它会自动暂停＊bar()，直到＊foo()结束。  
+一个更好的方法可以实现从＊bar()调用＊foo()，称为yield委托。yield委托的具体语法是：yield ＊（注意多出来的＊）。  
