@@ -359,7 +359,7 @@ p.then(
 专门设计用来以我们前面展示的方式运行Promise-yielding生成器的工具，有几个Promise抽象库提供了这样的工具，包括asynquence库及其runner(..)。  
 这里我们自己定义一个独立工具，叫作run(..)：
 ```js
-function run(generator) {
+function run (generator) {
   var args = [].slice.call(arguments, 1); // 获取所有除了generator函数的所有实参
   var it;
 
@@ -368,14 +368,12 @@ function run(generator) {
 
   // 返回一个promise用于生成器完成
   return Promise.resolve().then(
-    function handleNext(value) {
+    function handleNext (value) {
       // 对下一个yield出的值运行
       var next = it.next(value);
-      console.log('value', value);
       console.log('next', next);
 
-      return (function handleResult(next) {
-        console.log('handleResult', next);
+      return (function handleResult (next) {
         // 判断生成器是否运行完毕
         if (next.done) {
           // 运行完毕返回值
@@ -387,7 +385,7 @@ function run(generator) {
             handleNext,
 
             // 如果value是被拒绝的promise，就把错误传回生成器进行出错处理
-            function handleError(err) {
+            function handleError (err) {
               return Promise.resolve(
                 it.throw(err)
               ).then(handleResult);
@@ -400,9 +398,20 @@ function run(generator) {
 }
 
 
-function* main() {
+var ajax = function (url) {
+  return new Promise(function (resolve, reject) {
+    if (url === 'http://url.1') {
+      resolve(url);
+    } else {
+      reject('url错误');
+    }
+  });
+}
+
+
+function* main () {
   try {
-    var text = yield 11;
+    var text = yield ajax('http://url.1');
     console.log('成功', text);
   } catch (err) {
     console.log('失败', err);
@@ -411,11 +420,71 @@ function* main() {
 
 run(main);
 
-// value undefined
-// next { value: 11, done: false }
-// handleResult { value: 11, done: false }
-// 成功 11
-// value 11
+// next { value: Promise { 'http://url.1' }, done: false }
+// 成功 http://url.1
 // next { value: undefined, done: true }
-// handleResult { value: undefined, done: true }
+```
+#### 生成器中的Promise并发
+已经展示的都是Promise+生成器下的单步异步流程。但是，正常情况下得代码常常会有多个异步步骤。  
+第一直觉：  
+```js
+var ajax = function (url) {
+  return new Promise(function (resolve, reject) {
+    if (url === 'http://url.1' || url === 'http://url.2' || url === 'http://url.3?v=http://url.1,http://url.2') {
+      resolve(url);
+    } else {
+      reject('url错误');
+    }
+  });
+}
+
+function* foo () {
+  var r1 = yield ajax('http://url.1');
+  var r2 = yield ajax('http://url.2');
+
+  var r3 = yield ajax(`http://url.3?v=${r1},${r2}`)
+
+  console.log(r3);
+}
+
+// 使用前面定义的工具run(..)
+run(foo);
+
+// next { value: Promise { 'http://url.1' }, done: false }
+// next { value: Promise { 'http://url.2' }, done: false }
+// next {
+//   value: Promise { 'http://url.3?v=http://url.1,http://url.2' },
+//   done: false
+// }
+// r3 http://url.3?v=http://url.1,http://url.2
+// next { value: undefined, done: true }
+```
+这个例子是执行完r1再执行r2然后再执行r3，但是这并不是最优解，因为r1和r2其实可以并发执行，如下：  
+```js
+var ajax = function (url) {
+  return new Promise(function (resolve, reject) {
+    if (url === 'http://url.1' || url === 'http://url.2' || url === 'http://url.3?v=http://url.1,http://url.2') {
+      resolve(url);
+    } else {
+      reject('url错误');
+    }
+  });
+}
+
+
+function* foo () {
+  // 让两个请求并发执行（promise在实例化的时候就开始了）
+  var p1 = ajax('http://url.1');
+  var p2 = ajax('http://url.2');
+
+  // 等待两个promise决议
+  var r1 = yield p1;
+  var r2 = yield p2;
+
+  var r3 = yield ajax(`http://url.3?v=${r1},${r2}`)
+
+  console.log('r3', r3);
+}
+
+run(foo);
 ```
