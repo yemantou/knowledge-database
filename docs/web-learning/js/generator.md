@@ -33,6 +33,7 @@ it.next(); // x：3
 ```
 it = foo()运算并没有执行生成器＊foo()，而只是构造了一个迭代器（iterator），这个迭代器会控制它的执行。  
 生成器就是一类特殊的函数，可以一次或多次启动和停止，并不一定非得要完成。  
+
 #### 输入和输出
 ```js
 function* foo (x, y) {
@@ -81,6 +82,7 @@ console.log(res.value); // 42
    ::: tip 提示
    第一个next()调用是没有参数的，因为没有已经暂停的yield去接收它。  
    :::
+
 #### 多个迭代器
 每次构建一个迭代器，实际上就隐式构建了生成器的一个实例，通过这个迭代器来控制的是这个生成器实例。   
 同一个生成器的多个实例可以同时运行，它们甚至可以彼此交互：  
@@ -116,6 +118,7 @@ it2.next(res1.value / 4); // 200 10 3
 
 ### 生成器产生值
 生成器作为一种产生值的方式：这是“生成器”这个名称最初的使用场景。  
+
 #### 生产者与迭代器
 要产生一系列值，其中每个值都与前面一个有特定的关系。要实现这一点，需要一个有状态的生产者能够记住其生成的最后一个值。 
 这个任务是一个非常通用的设计模式，通常通过迭代器来解决。   
@@ -163,9 +166,11 @@ for (var item of something) {
 // 因为定义的迭代器something总是返回done:false，因此这个for..of循环将永远运行下去，所以要放一个break条件
 ```
 for..of循环在每次迭代中自动调用next()，它不会向next()传入任何值，并且会在接收到done:true之后自动停止。这对于在一组数据上循环很方便。  
+
 #### iterable
 iterable（可迭代）：指一个包含可以在其值上迭代的迭代器的对象。  
 从一个iterable中提取迭代器的方法是：iterable必须支持一个函数，其名称是专门的ES6符号值Symbol.iterator。  
+
 #### 生成器迭代器
 可以把生成器看作一个值的生产者，我们通过迭代器接口的next()调用一次提取出一个值。  
 严格说来，生成器本身并不是iterable，尽管非常类似——当你执行一个生成器，就得到了一个迭代器。  
@@ -202,6 +207,7 @@ for (var item of something()) {
    因为这里的something是生成器，并不是iterable。我们需要调用something()来构造一个生产者供for..of循环迭代。  
 2. something()调用产生一个迭代器，但for..of循环需要的是一个iterable  
    生成器的迭代器也有一个Symbol.iterator函数，基本上这个函数做的就是return this，和我们前面定义的iterable something一样。换句话说，生成器的迭代器也是一个iterable！  
+
 #### 停止生成器
 在上面的例子中看起来＊something()生成器的迭代器实例在循环中的break调用之后就永远留在了挂起状态。但其实for..of循环的“异常结束”（也就是“提前终止”），通常由break、return或者未捕获异常引起，会向生成器的迭代器发送一个信号使其终止。  
 向一个迭代器手工发送停止信号：  
@@ -355,6 +361,7 @@ p.then(
   }
 )
 ```
+
 #### 支持Promise的Generator Runner
 专门设计用来以我们前面展示的方式运行Promise-yielding生成器的工具，有几个Promise抽象库提供了这样的工具，包括asynquence库及其runner(..)。  
 这里我们自己定义一个独立工具，叫作run(..)：
@@ -424,6 +431,7 @@ run(main);
 // 成功 http://url.1
 // next { value: undefined, done: true }
 ```
+
 #### 生成器中的Promise并发
 已经展示的都是Promise+生成器下的单步异步流程。但是，正常情况下得代码常常会有多个异步步骤。  
 第一直觉：  
@@ -471,7 +479,6 @@ var ajax = function (url) {
   });
 }
 
-
 function* foo () {
   // 让两个请求并发执行（promise在实例化的时候就开始了）
   var p1 = ajax('http://url.1');
@@ -512,3 +519,220 @@ run(bar);
 ```
 它会自动暂停＊bar()，直到＊foo()结束。  
 一个更好的方法可以实现从＊bar()调用＊foo()，称为yield委托。yield委托的具体语法是：yield ＊（注意多出来的＊）。  
+
+一个简单例子：  
+```js
+function* foo() {
+  console.log('* foo() starting');
+
+  yield 3;
+  yield 4;
+  console.log('* foo() finished');
+}
+
+function* bar() {
+  yield 1;
+  yield 2;
+  yield* foo();
+  yield 5;
+}
+
+var it = bar();
+
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+
+// { value: 1, done: false }
+// { value: 2, done: false }
+// * foo() starting
+// { value: 3, done: false }
+// { value: 4, done: false }
+// * foo() finished
+// { value: 5, done: false }
+// { value: undefined, done: true }
+```
+委托：＊bar()把自己的迭代控制委托给了＊foo()。 
+
+使用三个顺序Ajax请求的委托例子：  
+```js
+function* foo () {
+  var r2 = yield ajax('http://url.2');
+  var r3 = yield ajax(`http://url.1/?v=${r2}`);
+
+  return r3;
+}
+
+function* bar () {
+  var r1 = yield ajax('http://url.1');
+
+  // 通过yield*“委托”给*foo(..)
+  var r3 = yield* foo();
+
+  console.log(r3);
+}
+
+run(bar);
+```
+yield ＊暂停了迭代控制，而不是生成器控制。  
+
+#### 为什么用委托
+yield委托的主要目的是代码组织，以达到与普通函数调用的对称。  
+
+#### 消息委托
+yield委托的双向消息传递工作：   
+```js
+function* foo() {
+  console.log('inside *foo()1：', yield 'B');
+
+  console.log('inside *foo()2：', yield 'C');
+
+  return 'D';
+}
+
+function* bar() {
+  console.log('inside *bar()1：', yield 'A');
+  // yield委托
+  console.log('inside *bar()2：', yield* foo()); // 被委托的这一步yield并不向外部传递消息
+
+  console.log('inside *bar()3：', yield 'E');
+
+  return 'F'
+}
+
+var it = bar();
+
+console.log('outside0：', it.next().value);
+console.log('outside1：', it.next(1).value);
+console.log('outside2：', it.next(2).value);
+console.log('outside3：', it.next(3).value);
+console.log('outside4：', it.next(4).value);
+
+// outside0： A
+// inside *bar()1： 1
+// outside1： B
+// inside *foo()1： 2
+// outside2： C
+// inside *foo()2： 3
+// inside *bar()2： D
+// outside3： E
+// inside *bar()3： 4
+// outside4： F
+``` 
+
+yield委托甚至并不要求必须转到另一个生成器，它可以转到一个非生成器的一般iterable。例如：  
+```js
+function* bar() {
+  console.log('inside *bar()1：', yield 'A');
+  // yield委托给非生成器
+  console.log('inside *bar()2：', yield* ['B', 'C', 'D']);
+
+  console.log('inside *bar()3：', yield 'E');
+
+  return 'F'
+}
+
+var it = bar();
+
+console.log('outside0：', it.next().value);
+console.log('outside1：', it.next(1).value);
+console.log('outside2：', it.next(2).value);
+console.log('outside3：', it.next(3).value);
+console.log('outside4：', it.next(4).value);
+console.log('outside5：', it.next(5).value);
+
+// outside0： A
+// inside *bar()1： 1
+// outside1： B
+// outside2： C
+// outside3： D
+// inside *bar()2： undefined
+// outside4： E
+// inside *bar()3： 5
+// outside5： F
+```
+默认的数组迭代器并不关心通过next(..)调用发送的任何消息，所以值2、3和4根本就被忽略了。还有，因为迭代器没有显式的返回值（和前面使用的＊foo()不同），所以yield ＊表达式完成后得到的是一个undefined。  
+
+**异常也被委托**
+和yield委托透明地双向传递消息的方式一样，错误和异常也是双向传递的
+
+#### 递归委托
+```js
+function run(generator) {
+  var args = [].slice.call(arguments, 1); // 获取所有除了generator函数的所有实参
+  var it;
+
+  // 在当前上下文中初始化生成器
+  it = generator.apply(this, args);
+
+  // 返回一个promise用于生成器完成
+  return Promise.resolve().then(
+    function handleNext(value) {
+      // 对下一个yield出的值运行
+      var next = it.next(value);
+      console.log('next', next);
+
+      return (function handleResult(next) {
+        // 判断生成器是否运行完毕
+        if (next.done) {
+          // 运行完毕返回值
+          return next.value
+        } else {
+          // 未运行完毕继续运行
+          return Promise.resolve(next.value).then(
+            // 成功就恢复异步循环，把决议的值发回生成器
+            handleNext,
+
+            // 如果value是被拒绝的promise，就把错误传回生成器进行出错处理
+            function handleError(err) {
+              return Promise.resolve(
+                it.throw(err)
+              ).then(handleResult);
+            }
+          );
+        }
+      })(next);
+    }
+  );
+}
+
+var ajax = function (url) {
+  return new Promise(function (resolve, reject) {
+    if (url === 'http://url.1') {
+      resolve(url);
+    } else {
+      reject('url错误');
+    }
+  });
+}
+
+function* foo(val) {
+  console.log('val', val);
+  if (val > 1) {
+    val = yield* foo(val - 1);
+  }
+  return yield ajax(`http://url.1`);
+}
+
+function* bar() {
+  var r1 = yield* foo(3);
+  console.log('r1', r1);
+}
+
+run(bar);
+
+// val 3
+// val 2
+// val 1
+// next { value: Promise { 'http://url.1' }, done: false }
+// next { value: Promise { 'http://url.1' }, done: false }
+// next { value: Promise { 'http://url.1' }, done: false }
+// r1 http://url.1
+// next { value: undefined, done: true }
+```
+![prototype、__proto__与constructor](@assets/img/recurrence.png)
+
+###  生成器并发
