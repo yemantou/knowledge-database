@@ -736,3 +736,64 @@ run(bar);
 ![prototype、__proto__与constructor](@assets/img/recurrence.png)
 
 ###  生成器并发
+两个不同并发Ajax响应处理函数需要彼此协调，以确保数据交流不会出现竞态条件。我们把响应插入到res数组中：   
+```js
+// ajax(..)是一个支持Promise的ajax工具
+var ajax = function (url) {
+  return new Promise(function (resolve, reject) {
+    if (url === 'http://url.1' || url === 'http://url.2') {
+      resolve(url);
+    } else {
+      reject('url错误');
+    }
+  });
+}
+
+const res = [];
+
+function* reqData (url) {
+  var data = yield ajax(url);
+
+  // 控制转移
+  yield;
+  res.push(data);
+}
+
+var it1 = reqData('http://url.1');
+var it2 = reqData('http://url.2');
+
+var p1 = it1.next().value;
+var p2 = it2.next().value;
+
+
+p1.then(function (data) {
+  it1.next(data);
+});
+
+p2.then(function (data) {
+  it2.next(data);
+});
+
+Promise.all([p1, p2]).then(
+  function () {
+    it1.next();
+    it2.next();
+    console.log(res); // ['http://url.1', 'http://url.2']
+  }
+)
+```
+
+### 形实转换程序（thunk）
+JavaScript中的thunk是指一个用于调用另外一个函数的函数，没有任何参数。   
+例如：  
+```js
+function foo (x, y) {
+  return x * y;
+}
+
+function fooThunk () {
+  return foo(3, 4);
+}
+
+console.log(fooThunk()); // 12
+```
