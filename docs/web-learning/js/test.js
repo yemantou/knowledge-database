@@ -1,54 +1,78 @@
-function run(generator) {
-  var args = [].slice.call(arguments, 1); // 获取所有除了generator函数的所有实参
-  var it;
 
-  // 在当前上下文中初始化生成器
-  it = generator.apply(this, args);
-
-  // 返回一个promise用于生成器完成
-  return Promise.resolve().then(
-    function handleNext(value) {
-      // 对下一个yield出的值运行
-      var next = it.next(value);
-
-      return (function handleResult(next) {
-        // 判断生成器是否运行完毕
-        if (next.done) {
-          // 运行完毕返回值
-          return next.value
-        } else if (typeof next.value === 'function') {
-          return new Promise(function (resolve, reject) {
-            // 用error-first回调调用这个thunk
-            next.value(function (err, msg) {
-              if (err) {
-                resolve(msg);
-              } else {
-                reject(err);
-              }
-            });
-          }).then(
-            handleNext,
-            function handleError(err) {
-              return Promise.resolve(
-                it.throw(err)
-              ).then(handleResult);
-            }
-          )
-        } else {
-          // 未运行完毕继续运行
-          return Promise.resolve(next.value).then(
-            // 成功就恢复异步循环，把决议的值发回生成器
-            handleNext,
-
-            // 如果value是被拒绝的promise，就把错误传回生成器进行出错处理
-            function handleError(err) {
-              return Promise.resolve(
-                it.throw(err)
-              ).then(handleResult);
-            }
-          );
-        }
-      })(next);
+// ajax(..)是一个支持Promise的ajax工具
+var ajax = function (url) {
+  return new Promise(function (resolve, reject) {
+    if (url === 'http://url.1' || url === 'http://url.2') {
+      resolve(url);
+    } else {
+      reject('url错误');
     }
-  );
+  });
+}
+
+function foo(url) {
+  // 管理生成器状态
+  var state;
+
+  // 生成器范围变量声明
+  var val;
+
+  function process(v) {
+    switch (state) {
+      case 1:
+        console.log('ajaxing:', url);
+        return ajax(url);
+      case 2:
+        val = v;
+        console.log(val);
+        return;
+      case 3:
+        var err = v;
+        console.log('Oops:', err);
+        return false;
+    }
+  }
+
+  // 构造并返回一个迭代器
+  return {
+    next: function (v) {
+      // 初始状态
+      if (!state) {
+        state = 1;
+        return {
+          done: false,
+          value: process()
+        };
+      }
+      // yield成功恢复
+      else if (state === 1) {
+        state = 2;
+        return {
+          done: true,
+          value: process(v)
+        };
+      }
+      // 生成器已经完成
+      else {
+        return {
+          done: true,
+          value: undefined
+        }
+      }
+    },
+    'throw': function (e) {
+      // 唯一的显式错误处理在状态1
+      if (state === 1) {
+        state = 3;
+        return {
+          done: true,
+          value: process(e)
+        }
+      }
+      // 否则错误就不会处理，所以只把它抛回
+      else {
+        throw e;
+      }
+    }
+  }
 }

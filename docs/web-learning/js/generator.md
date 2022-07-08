@@ -932,24 +932,127 @@ thunk本身基本上没有任何可信任性和可组合性保证，而这些是
 
 ###  ES6之前的生成器
 如果不能忽略ES6前的浏览器的话，怎么才能把生成器引入到我们的浏览器JavaScript中呢？   
-1. 手工变换  
-   首先还是需要一个可用的普通函数，它需要返回一个迭代器。  
-   ```js
-   function foo(url) {
-    //..
+手工变换  
+首先还是需要一个可用的普通函数，它需要返回一个迭代器。  
+```js
+function foo(url) {
+//..
 
-    // 构造并返回一个迭代器
-    return {
-      next: function(v) {
-        // ..
-      },
-      throw: function(e) {
-        // ..
+// 构造并返回一个迭代器
+return {
+  next: function(v) {
+    // ..
+  },
+  throw: function(e) {
+    // ..
+  }
+}
+}
+
+var it = foo('http://url.1')
+```
+生成器是通过暂停自己的作用域/状态实现它的“魔法”的。可以通过函数闭包来模拟这一点。为了理解这样的代码是如何编写的，先给生成器的各个部分标注上状态值：  
+```js
+// ajax是一个支持Promise的ajax工具
+function* foo(url) {
+  // 状态1
+  try {
+    console.log('ajaxing:', url);
+    var tmp1 = ajax(url);
+    // 状态2
+    var val = yield tmp1;
+  } catch (err) {
+    //状态3
+    console.log('Oops:', err);
+    return false;
+  }
+}
+```
+1是起始状态，2是ajax(..)成功后的状态，3是ajax(..)失败的状态。  
+
+在闭包中定义一个变量state用于跟踪状态；定义一个内层函数，称为process(..)，使用switch语句处理每个状态：    
+```js
+// ajax(..)是一个支持Promise的ajax工具
+var ajax = function (url) {
+  return new Promise(function (resolve, reject) {
+    if (url === 'http://url.1' || url === 'http://url.2') {
+      resolve(url);
+    } else {
+      reject('url错误');
+    }
+  });
+}
+
+function foo(url) {
+  // 管理生成器状态
+  var state;
+
+  // 生成器范围变量声明
+  var val;
+
+  function process(v) {
+    switch (state) {
+      case 1:
+        console.log('ajaxing:', url);
+        return ajax(url);
+      case 2:
+        val = v;
+        console.log(val);
+        return;
+      case 2:
+        var err = v;
+        console.log('Oops:', err);
+        return false;
+    }
+  }
+
+  // 构造并返回一个迭代器
+  return {
+    next: function (v) {
+      // 初始状态
+      if (!state) {
+        state = 1;
+        return {
+          done: false,
+          value: process()
+        };
+      }
+      // yield成功恢复
+      else if (state === 1) {
+        state = 2;
+        return {
+          done: true,
+          value: process(v)
+        };
+      }
+      // 生成器已经完成
+      else {
+        return {
+          done: true,
+          value: undefined
+        }
+      }
+    },
+    'throw': function (e) {
+      // 唯一的显式错误处理在状态1
+      if (state === 1) {
+        state = 3;
+        return {
+          done: true,
+          value: process(e)
+        }
+      }
+      // 否则错误就不会处理，所以只把它抛回
+      else {
+        throw e;
       }
     }
-   }
+  }
+}
+```
 
-   var it = foo('http://url.1')
-   ```
-  生成器是通过暂停自己的作用域/状态实现它的“魔法”的。可以通过函数闭包来模拟这一点。  
+### 小结
+生成器是ES6的一个新的函数类型，它并不像普通函数那样总是运行到结束。取而代之的是，生成器可以在运行当中（完全保持其状态）暂停，并且将来再从暂停的地方恢复运行。  
+在异步控制流程方面，生成器的关键优点是：生成器内部的代码是以自然的同步/顺序方式表达任务的一系列步骤。其技巧在于，我们把可能的异步隐藏在了关键字yield的后面，把异步移动到控制生成器的迭代器的代码部分。  
+生成器为异步代码保持了顺序、同步、阻塞的代码模式，这使得大脑可以更自然地追踪代码，解决了基于回调的异步的两个关键缺陷之一。   
    
