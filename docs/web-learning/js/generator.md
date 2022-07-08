@@ -797,3 +797,159 @@ function fooThunk () {
 
 console.log(fooThunk()); // 12
 ```
+
+异步的thunk，让它接收一个回调：  
+```js
+function foo(x, y, callback) {
+  setTimeout(() => {
+    callback && callback(x * y);
+  }, 500)
+}
+
+function fooThunk(callback) {
+  return foo(3, 4, callback);
+}
+
+fooThunk((res) => {
+  console.log(res); // 12
+})
+```
+
+发明一个工具来做thunk封装工作：  
+```js
+function foo(x, y, callback) {
+  setTimeout(() => {
+    callback && callback(x * y);
+  }, 1000);
+}
+
+function thunkify(fn) {
+  var args = [].slice.call(arguments, 1);
+  return function (callback) {
+    args.push(callback);
+    return fn.apply(null, args);
+  };
+}
+
+const fooThunk = thunkify(foo, 3, 4);
+
+fooThunk((res) => {
+  console.log(res); // 12
+});
+```
+
+JavaScript中使用thunk的典型方案，不是thunkify(..)构造thunk本身，而是thunkify(..)工具产生一个生成thunk的函数。  
+```js
+function foo(x, y, callback) {
+  setTimeout(() => {
+    callback && callback(x * y);
+  }, 1000);
+}
+
+// 
+function thunkify(fn) {
+  return function () {
+    var args = [].slice.call(arguments);
+    return function (callback) {
+      args.push(callback);
+      return fn.apply(null, args);
+    };
+  }
+}
+
+const thunkory = thunkify(foo);
+
+const fooThunk = thunkory(3, 4);
+
+fooThunk((res) => {
+  console.log(res); // 12
+})
+```
+#### thunk的内容与生成器的关系
+Promise要比裸thunk功能更强、更值得信任。但它们都可以被看作是对一个值的请求，回答可能是异步的。  
+thunkory和promisory本质上都是在提出一个请求（要求一个值），分别由thunk fooThunk和promise fooPromise表示对这个请求的未来的答复。  
+因此yield出Promise以获得异步性的生成器，也可以为异步性而yield thunk。  
+run(..)工具支持thunk的补丁：  
+```js
+function run(generator) {
+  var args = [].slice.call(arguments, 1); // 获取所有除了generator函数的所有实参
+  var it;
+
+  // 在当前上下文中初始化生成器
+  it = generator.apply(this, args);
+
+  // 返回一个promise用于生成器完成
+  return Promise.resolve().then(
+    function handleNext(value) {
+      // 对下一个yield出的值运行
+      var next = it.next(value);
+
+      return (function handleResult(next) {
+        // 判断生成器是否运行完毕
+        if (next.done) {
+          // 运行完毕返回值
+          return next.value
+        } else if (typeof next.value === 'function') {
+          return new Promise(function (resolve, reject) {
+            // 用error-first回调调用这个thunk
+            next.value(function (err, msg) {
+              if (err) {
+                resolve(msg);
+              } else {
+                reject(err);
+              }
+            });
+          }).then(
+            handleNext,
+            function handleError(err) {
+              return Promise.resolve(
+                it.throw(err)
+              ).then(handleResult);
+            }
+          )
+        } else {
+          // 未运行完毕继续运行
+          return Promise.resolve(next.value).then(
+            // 成功就恢复异步循环，把决议的值发回生成器
+            handleNext,
+
+            // 如果value是被拒绝的promise，就把错误传回生成器进行出错处理
+            function handleError(err) {
+              return Promise.resolve(
+                it.throw(err)
+              ).then(handleResult);
+            }
+          );
+        }
+      })(next);
+    }
+  );
+}
+```
+::: danger 尽量不要使用thunk
+thunk本身基本上没有任何可信任性和可组合性保证，而这些是Promise的设计目标所在。    
+:::
+
+###  ES6之前的生成器
+如果不能忽略ES6前的浏览器的话，怎么才能把生成器引入到我们的浏览器JavaScript中呢？   
+1. 手工变换  
+   首先还是需要一个可用的普通函数，它需要返回一个迭代器。  
+   ```js
+   function foo(url) {
+    //..
+
+    // 构造并返回一个迭代器
+    return {
+      next: function(v) {
+        // ..
+      },
+      throw: function(e) {
+        // ..
+      }
+    }
+   }
+
+   var it = foo('http://url.1')
+   ```
+  生成器是通过暂停自己的作用域/状态实现它的“魔法”的。可以通过函数闭包来模拟这一点。  
+   
