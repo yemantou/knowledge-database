@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>混合对象“类” | 胖虎拽的知识库</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="个人知识沉淀平台">
+    
+    <link rel="preload" href="/knowledge-database/assets/css/0.styles.658b6182.css" as="style"><link rel="preload" href="/knowledge-database/assets/js/app.c3ab198b.js" as="script"><link rel="preload" href="/knowledge-database/assets/js/2.20d9929d.js" as="script"><link rel="preload" href="/knowledge-database/assets/js/31.9e127cd4.js" as="script"><link rel="prefetch" href="/knowledge-database/assets/js/10.967c18a7.js"><link rel="prefetch" href="/knowledge-database/assets/js/11.1da1a2e4.js"><link rel="prefetch" href="/knowledge-database/assets/js/12.c44bbf97.js"><link rel="prefetch" href="/knowledge-database/assets/js/13.6a3efe18.js"><link rel="prefetch" href="/knowledge-database/assets/js/14.34f4d88e.js"><link rel="prefetch" href="/knowledge-database/assets/js/15.f2d4e670.js"><link rel="prefetch" href="/knowledge-database/assets/js/16.00002c9b.js"><link rel="prefetch" href="/knowledge-database/assets/js/17.8cc96a6a.js"><link rel="prefetch" href="/knowledge-database/assets/js/18.68a3ea0a.js"><link rel="prefetch" href="/knowledge-database/assets/js/19.e97fd08c.js"><link rel="prefetch" href="/knowledge-database/assets/js/20.8acdb8e9.js"><link rel="prefetch" href="/knowledge-database/assets/js/21.ad0210c6.js"><link rel="prefetch" href="/knowledge-database/assets/js/22.1d6283d1.js"><link rel="prefetch" href="/knowledge-database/assets/js/23.f656b7e5.js"><link rel="prefetch" href="/knowledge-database/assets/js/24.b3e84074.js"><link rel="prefetch" href="/knowledge-database/assets/js/25.c31b1ab3.js"><link rel="prefetch" href="/knowledge-database/assets/js/26.9f95dbc2.js"><link rel="prefetch" href="/knowledge-database/assets/js/27.8a9c144d.js"><link rel="prefetch" href="/knowledge-database/assets/js/28.695663b4.js"><link rel="prefetch" href="/knowledge-database/assets/js/29.4e08c2a3.js"><link rel="prefetch" href="/knowledge-database/assets/js/3.5d8abb12.js"><link rel="prefetch" href="/knowledge-database/assets/js/30.3336b108.js"><link rel="prefetch" href="/knowledge-database/assets/js/32.6b4b3616.js"><link rel="prefetch" href="/knowledge-database/assets/js/33.018d6cd7.js"><link rel="prefetch" href="/knowledge-database/assets/js/34.e94bc35b.js"><link rel="prefetch" href="/knowledge-database/assets/js/35.f3bc7ea9.js"><link rel="prefetch" href="/knowledge-database/assets/js/36.f278b1c6.js"><link rel="prefetch" href="/knowledge-database/assets/js/37.aed54ab8.js"><link rel="prefetch" href="/knowledge-database/assets/js/38.27b80d5e.js"><link rel="prefetch" href="/knowledge-database/assets/js/39.548d8881.js"><link rel="prefetch" href="/knowledge-database/assets/js/4.b25cf035.js"><link rel="prefetch" href="/knowledge-database/assets/js/40.431ddcd6.js"><link rel="prefetch" href="/knowledge-database/assets/js/41.1010ef85.js"><link rel="prefetch" href="/knowledge-database/assets/js/42.e17b677d.js"><link rel="prefetch" href="/knowledge-database/assets/js/43.4193560b.js"><link rel="prefetch" href="/knowledge-database/assets/js/44.b0eceb71.js"><link rel="prefetch" href="/knowledge-database/assets/js/5.658abe0f.js"><link rel="prefetch" href="/knowledge-database/assets/js/6.f05d34a0.js"><link rel="prefetch" href="/knowledge-database/assets/js/7.dbaa6e78.js"><link rel="prefetch" href="/knowledge-database/assets/js/8.ad733b71.js"><link rel="prefetch" href="/knowledge-database/assets/js/9.3c0093c6.js">
+    <link rel="stylesheet" href="/knowledge-database/assets/css/0.styles.658b6182.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/knowledge-database/" class="home-link router-link-active"><!----> <span class="site-name">胖虎拽的知识库</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/knowledge-database/guide/" class="nav-link">
+    文档指南
+  </a></div><div class="nav-item"><a href="/knowledge-database/auto-build/" class="nav-link">
+    自动构建
+  </a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端学习" class="dropdown-title"><span class="title">前端学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端学习" class="mobile-dropdown-title"><span class="title">前端学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/js/" class="nav-link router-link-active">
+    JS
+  </a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/css/" class="nav-link">
+    CSS
+  </a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/vue/" class="nav-link">
+    Vue
+  </a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="计算机基础知识" class="dropdown-title"><span class="title">计算机基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="计算机基础知识" class="mobile-dropdown-title"><span class="title">计算机基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/computer-networks/" class="nav-link">
+    计算机网络
+  </a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/data-structure/" class="nav-link">
+    数据结构
+  </a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/algorithm/" class="nav-link">
+    算法
+  </a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记" class="dropdown-title"><span class="title">笔记</span> <span class="arrow down"></span></button> <button type="button" aria-label="笔记" class="mobile-dropdown-title"><span class="title">笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/note/web/" class="nav-link">
+    前端学习笔记
+  </a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/backend/" class="nav-link">
+    后端学习笔记
+  </a></li></ul></div></div><div class="nav-item"><a href="https://github.com/yemantou/knowledge-database" target="_blank" rel="noopener noreferrer" class="nav-link external">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/knowledge-database/guide/" class="nav-link">
+    文档指南
+  </a></div><div class="nav-item"><a href="/knowledge-database/auto-build/" class="nav-link">
+    自动构建
+  </a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端学习" class="dropdown-title"><span class="title">前端学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端学习" class="mobile-dropdown-title"><span class="title">前端学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/js/" class="nav-link router-link-active">
+    JS
+  </a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/css/" class="nav-link">
+    CSS
+  </a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/vue/" class="nav-link">
+    Vue
+  </a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="计算机基础知识" class="dropdown-title"><span class="title">计算机基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="计算机基础知识" class="mobile-dropdown-title"><span class="title">计算机基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/computer-networks/" class="nav-link">
+    计算机网络
+  </a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/data-structure/" class="nav-link">
+    数据结构
+  </a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/algorithm/" class="nav-link">
+    算法
+  </a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记" class="dropdown-title"><span class="title">笔记</span> <span class="arrow down"></span></button> <button type="button" aria-label="笔记" class="mobile-dropdown-title"><span class="title">笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/note/web/" class="nav-link">
+    前端学习笔记
+  </a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/backend/" class="nav-link">
+    后端学习笔记
+  </a></li></ul></div></div><div class="nav-item"><a href="https://github.com/yemantou/knowledge-database" target="_blank" rel="noopener noreferrer" class="nav-link external">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>JS 🙃</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/knowledge-database/web-learning/js/" aria-current="page" class="sidebar-link">JS学习</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>你不知道的JS</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/knowledge-database/web-learning/js/scope.html" class="sidebar-link">作用域是什么</a></li><li><a href="/knowledge-database/web-learning/js/scope-model.html" class="sidebar-link">作用域（两种主要的工作模型）</a></li><li><a href="/knowledge-database/web-learning/js/function-block-scope.html" class="sidebar-link">函数作用域和块作用域</a></li><li><a href="/knowledge-database/web-learning/js/lift.html" class="sidebar-link">提升</a></li><li><a href="/knowledge-database/web-learning/js/scope-closure.html" class="sidebar-link">作用域闭包</a></li><li><a href="/knowledge-database/web-learning/js/this.html" class="sidebar-link">this</a></li><li><a href="/knowledge-database/web-learning/js/object.html" class="sidebar-link">对象</a></li><li><a href="/knowledge-database/web-learning/js/mix-object-class.html" aria-current="page" class="active sidebar-link">混合对象“类”</a></li><li><a href="/knowledge-database/web-learning/js/prototype.html" class="sidebar-link">原型</a></li><li><a href="/knowledge-database/web-learning/js/behavior-delegating.html" class="sidebar-link">行为委托</a></li><li><a href="/knowledge-database/web-learning/js/currying.html" class="sidebar-link">柯里化</a></li><li><a href="/knowledge-database/web-learning/js/symbol.html" class="sidebar-link">Symbol</a></li><li><a href="/knowledge-database/web-learning/js/new.html" class="sidebar-link">new</a></li><li><a href="/knowledge-database/web-learning/js/class-object.html" class="sidebar-link">JS的类与对象</a></li><li><a href="/knowledge-database/web-learning/js/arguments.html" class="sidebar-link">Arguments 对象</a></li><li><a href="/knowledge-database/web-learning/js/type-syntax.html" class="sidebar-link">类型和语法</a></li><li><a href="/knowledge-database/web-learning/js/native-function.html" class="sidebar-link">原生函数</a></li><li><a href="/knowledge-database/web-learning/js/coercion.html" class="sidebar-link">强制类型转换</a></li><li><a href="/knowledge-database/web-learning/js/async.html" class="sidebar-link">异步</a></li><li><a href="/knowledge-database/web-learning/js/callback.html" class="sidebar-link">回调</a></li><li><a href="/knowledge-database/web-learning/js/promise.html" class="sidebar-link">Promise</a></li><li><a href="/knowledge-database/web-learning/js/generator.html" class="sidebar-link">生成器</a></li><li><a href="/knowledge-database/web-learning/js/performance.html" class="sidebar-link">程序性能</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h3 id="多态"><a href="#多态" class="header-anchor">#</a> 多态</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">Vehicle</span> <span class="token punctuation">{</span>
+  engines <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+  <span class="token function">ignition</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">output</span><span class="token punctuation">(</span><span class="token string">'Turning on my engine.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">drive</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">ignition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">output</span><span class="token punctuation">(</span><span class="token string">'Steering and moving forward.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Car</span> inherits Vehicle <span class="token punctuation">{</span>
+  wheels <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+
+  <span class="token function">drive</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">inherited</span><span class="token operator">:</span> <span class="token function">drive</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">output</span><span class="token punctuation">(</span><span class="token string">'Roling on all'</span><span class="token punctuation">,</span> wheels<span class="token punctuation">,</span> <span class="token string">'wheels！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">SpeedBoat</span> inherits Vehicle <span class="token punctuation">{</span>
+  engines <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+  <span class="token function">ignition</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">output</span><span class="token punctuation">(</span><span class="token string">'Turning on my'</span><span class="token punctuation">,</span> engines<span class="token punctuation">,</span> <span class="token string">'engines.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">pilot</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">inherited</span><span class="token operator">:</span> <span class="token function">drive</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">output</span><span class="token punctuation">(</span><span class="token string">'Speeding through the water with ease！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>Car重写了继承自父类的drive()方法，但是之后Car调用了inherited:drive()方法，这表明Car可以引用继承来的原始drive()方法。快艇的pilot()方法同样引用了原始drive()方法。这个技术被称为多态或者虚拟多态。在本例中，更恰当的说法是相对多态。</p> <div class="custom-block tip"><p class="custom-block-title">多态</p> <p>多态并不表示子类和父类有关联，子类得到的只是父类的一份副本。类的继承其实就是复制。</p></div> <div class="custom-block tip"><p class="custom-block-title">相对多态</p> <p>“相对”是因为我们并不会定义想要访问的绝对继承层次（或者说类），而是使用相对引用“查找上一层”。</p></div> <h3 id="混入-模拟类的复制行为"><a href="#混入-模拟类的复制行为" class="header-anchor">#</a> 混入：模拟类的复制行为</h3> <h4 id="显式混入"><a href="#显式混入" class="header-anchor">#</a> 显式混入</h4> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">mixin</span><span class="token punctuation">(</span><span class="token parameter">sourceObj<span class="token punctuation">,</span> targetObj</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> key <span class="token keyword">in</span> sourceObj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 只会在不存在的情况下进行复制</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>key <span class="token keyword">in</span> targetObj<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      targetObj<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> sourceObj<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> targetObj
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> Vehicle <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">engines</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token function-variable function">ignition</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Turning on my engine.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">drive</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">ignition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Steering and moving forward！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> Car <span class="token operator">=</span> <span class="token function">mixin</span><span class="token punctuation">(</span>Vehicle<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">wheels</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">;</span>
+  <span class="token function-variable function">drive</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Vehicle<span class="token punctuation">.</span><span class="token function">drive</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Rolling on all'</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>wheels <span class="token operator">+</span> <span class="token string">'wheels！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><div class="custom-block danger"><p class="custom-block-title">警告</p> <p>js对于函数是进行引用的，所以修改函数实际会影响两个对象。<br>
+只在能够提高代码可读性的前提下使用显式混入，避免使用增加代码理解难度或者让对象关系更加复杂的模式。</p></div> <h4 id="隐式混入"><a href="#隐式混入" class="header-anchor">#</a> 隐式混入</h4> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> Something <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">cool</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>greeting <span class="token operator">=</span> <span class="token string">'Hello World'</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>count <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>count <span class="token operator">?</span> <span class="token keyword">this</span><span class="token punctuation">.</span>count <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+Something<span class="token punctuation">.</span><span class="token function">cool</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Something<span class="token punctuation">.</span>greeting<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'Hello World'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Something<span class="token punctuation">.</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+
+<span class="token keyword">var</span> Another <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">cool</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 隐式把Something混入Another</span>
+    Something<span class="token punctuation">.</span><span class="token function">cool</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+Another<span class="token punctuation">.</span><span class="token function">cool</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Another<span class="token punctuation">.</span>greeting<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'Hello World'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Another<span class="token punctuation">.</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1（count不是共享状态）</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/knowledge-database/web-learning/js/object.html" class="prev">
+          对象
+        </a></span> <span class="next"><a href="/knowledge-database/web-learning/js/prototype.html">
+          原型
+        </a>
+        →
+      </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/knowledge-database/assets/js/app.c3ab198b.js" defer></script><script src="/knowledge-database/assets/js/2.20d9929d.js" defer></script><script src="/knowledge-database/assets/js/31.9e127cd4.js" defer></script>
+  </body>
+</html>

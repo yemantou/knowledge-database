@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>异步 | 胖虎拽的知识库</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="个人知识沉淀平台">
+    
+    <link rel="preload" href="/knowledge-database/assets/css/0.styles.658b6182.css" as="style"><link rel="preload" href="/knowledge-database/assets/js/app.c3ab198b.js" as="script"><link rel="preload" href="/knowledge-database/assets/js/2.20d9929d.js" as="script"><link rel="preload" href="/knowledge-database/assets/js/24.b3e84074.js" as="script"><link rel="prefetch" href="/knowledge-database/assets/js/10.967c18a7.js"><link rel="prefetch" href="/knowledge-database/assets/js/11.1da1a2e4.js"><link rel="prefetch" href="/knowledge-database/assets/js/12.c44bbf97.js"><link rel="prefetch" href="/knowledge-database/assets/js/13.6a3efe18.js"><link rel="prefetch" href="/knowledge-database/assets/js/14.34f4d88e.js"><link rel="prefetch" href="/knowledge-database/assets/js/15.f2d4e670.js"><link rel="prefetch" href="/knowledge-database/assets/js/16.00002c9b.js"><link rel="prefetch" href="/knowledge-database/assets/js/17.8cc96a6a.js"><link rel="prefetch" href="/knowledge-database/assets/js/18.68a3ea0a.js"><link rel="prefetch" href="/knowledge-database/assets/js/19.e97fd08c.js"><link rel="prefetch" href="/knowledge-database/assets/js/20.8acdb8e9.js"><link rel="prefetch" href="/knowledge-database/assets/js/21.ad0210c6.js"><link rel="prefetch" href="/knowledge-database/assets/js/22.1d6283d1.js"><link rel="prefetch" href="/knowledge-database/assets/js/23.f656b7e5.js"><link rel="prefetch" href="/knowledge-database/assets/js/25.c31b1ab3.js"><link rel="prefetch" href="/knowledge-database/assets/js/26.9f95dbc2.js"><link rel="prefetch" href="/knowledge-database/assets/js/27.8a9c144d.js"><link rel="prefetch" href="/knowledge-database/assets/js/28.695663b4.js"><link rel="prefetch" href="/knowledge-database/assets/js/29.4e08c2a3.js"><link rel="prefetch" href="/knowledge-database/assets/js/3.5d8abb12.js"><link rel="prefetch" href="/knowledge-database/assets/js/30.3336b108.js"><link rel="prefetch" href="/knowledge-database/assets/js/31.9e127cd4.js"><link rel="prefetch" href="/knowledge-database/assets/js/32.6b4b3616.js"><link rel="prefetch" href="/knowledge-database/assets/js/33.018d6cd7.js"><link rel="prefetch" href="/knowledge-database/assets/js/34.e94bc35b.js"><link rel="prefetch" href="/knowledge-database/assets/js/35.f3bc7ea9.js"><link rel="prefetch" href="/knowledge-database/assets/js/36.f278b1c6.js"><link rel="prefetch" href="/knowledge-database/assets/js/37.aed54ab8.js"><link rel="prefetch" href="/knowledge-database/assets/js/38.27b80d5e.js"><link rel="prefetch" href="/knowledge-database/assets/js/39.548d8881.js"><link rel="prefetch" href="/knowledge-database/assets/js/4.b25cf035.js"><link rel="prefetch" href="/knowledge-database/assets/js/40.431ddcd6.js"><link rel="prefetch" href="/knowledge-database/assets/js/41.1010ef85.js"><link rel="prefetch" href="/knowledge-database/assets/js/42.e17b677d.js"><link rel="prefetch" href="/knowledge-database/assets/js/43.4193560b.js"><link rel="prefetch" href="/knowledge-database/assets/js/44.b0eceb71.js"><link rel="prefetch" href="/knowledge-database/assets/js/5.658abe0f.js"><link rel="prefetch" href="/knowledge-database/assets/js/6.f05d34a0.js"><link rel="prefetch" href="/knowledge-database/assets/js/7.dbaa6e78.js"><link rel="prefetch" href="/knowledge-database/assets/js/8.ad733b71.js"><link rel="prefetch" href="/knowledge-database/assets/js/9.3c0093c6.js">
+    <link rel="stylesheet" href="/knowledge-database/assets/css/0.styles.658b6182.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/knowledge-database/" class="home-link router-link-active"><!----> <span class="site-name">胖虎拽的知识库</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/knowledge-database/guide/" class="nav-link">
+    文档指南
+  </a></div><div class="nav-item"><a href="/knowledge-database/auto-build/" class="nav-link">
+    自动构建
+  </a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端学习" class="dropdown-title"><span class="title">前端学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端学习" class="mobile-dropdown-title"><span class="title">前端学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/js/" class="nav-link router-link-active">
+    JS
+  </a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/css/" class="nav-link">
+    CSS
+  </a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/vue/" class="nav-link">
+    Vue
+  </a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="计算机基础知识" class="dropdown-title"><span class="title">计算机基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="计算机基础知识" class="mobile-dropdown-title"><span class="title">计算机基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/computer-networks/" class="nav-link">
+    计算机网络
+  </a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/data-structure/" class="nav-link">
+    数据结构
+  </a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/algorithm/" class="nav-link">
+    算法
+  </a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记" class="dropdown-title"><span class="title">笔记</span> <span class="arrow down"></span></button> <button type="button" aria-label="笔记" class="mobile-dropdown-title"><span class="title">笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/note/web/" class="nav-link">
+    前端学习笔记
+  </a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/backend/" class="nav-link">
+    后端学习笔记
+  </a></li></ul></div></div><div class="nav-item"><a href="https://github.com/yemantou/knowledge-database" target="_blank" rel="noopener noreferrer" class="nav-link external">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/knowledge-database/guide/" class="nav-link">
+    文档指南
+  </a></div><div class="nav-item"><a href="/knowledge-database/auto-build/" class="nav-link">
+    自动构建
+  </a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端学习" class="dropdown-title"><span class="title">前端学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端学习" class="mobile-dropdown-title"><span class="title">前端学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/js/" class="nav-link router-link-active">
+    JS
+  </a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/css/" class="nav-link">
+    CSS
+  </a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/vue/" class="nav-link">
+    Vue
+  </a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="计算机基础知识" class="dropdown-title"><span class="title">计算机基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="计算机基础知识" class="mobile-dropdown-title"><span class="title">计算机基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/computer-networks/" class="nav-link">
+    计算机网络
+  </a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/data-structure/" class="nav-link">
+    数据结构
+  </a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/algorithm/" class="nav-link">
+    算法
+  </a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记" class="dropdown-title"><span class="title">笔记</span> <span class="arrow down"></span></button> <button type="button" aria-label="笔记" class="mobile-dropdown-title"><span class="title">笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/note/web/" class="nav-link">
+    前端学习笔记
+  </a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/backend/" class="nav-link">
+    后端学习笔记
+  </a></li></ul></div></div><div class="nav-item"><a href="https://github.com/yemantou/knowledge-database" target="_blank" rel="noopener noreferrer" class="nav-link external">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>JS 🙃</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/knowledge-database/web-learning/js/" aria-current="page" class="sidebar-link">JS学习</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>你不知道的JS</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/knowledge-database/web-learning/js/scope.html" class="sidebar-link">作用域是什么</a></li><li><a href="/knowledge-database/web-learning/js/scope-model.html" class="sidebar-link">作用域（两种主要的工作模型）</a></li><li><a href="/knowledge-database/web-learning/js/function-block-scope.html" class="sidebar-link">函数作用域和块作用域</a></li><li><a href="/knowledge-database/web-learning/js/lift.html" class="sidebar-link">提升</a></li><li><a href="/knowledge-database/web-learning/js/scope-closure.html" class="sidebar-link">作用域闭包</a></li><li><a href="/knowledge-database/web-learning/js/this.html" class="sidebar-link">this</a></li><li><a href="/knowledge-database/web-learning/js/object.html" class="sidebar-link">对象</a></li><li><a href="/knowledge-database/web-learning/js/mix-object-class.html" class="sidebar-link">混合对象“类”</a></li><li><a href="/knowledge-database/web-learning/js/prototype.html" class="sidebar-link">原型</a></li><li><a href="/knowledge-database/web-learning/js/behavior-delegating.html" class="sidebar-link">行为委托</a></li><li><a href="/knowledge-database/web-learning/js/currying.html" class="sidebar-link">柯里化</a></li><li><a href="/knowledge-database/web-learning/js/symbol.html" class="sidebar-link">Symbol</a></li><li><a href="/knowledge-database/web-learning/js/new.html" class="sidebar-link">new</a></li><li><a href="/knowledge-database/web-learning/js/class-object.html" class="sidebar-link">JS的类与对象</a></li><li><a href="/knowledge-database/web-learning/js/arguments.html" class="sidebar-link">Arguments 对象</a></li><li><a href="/knowledge-database/web-learning/js/type-syntax.html" class="sidebar-link">类型和语法</a></li><li><a href="/knowledge-database/web-learning/js/native-function.html" class="sidebar-link">原生函数</a></li><li><a href="/knowledge-database/web-learning/js/coercion.html" class="sidebar-link">强制类型转换</a></li><li><a href="/knowledge-database/web-learning/js/async.html" aria-current="page" class="active sidebar-link">异步</a></li><li><a href="/knowledge-database/web-learning/js/callback.html" class="sidebar-link">回调</a></li><li><a href="/knowledge-database/web-learning/js/promise.html" class="sidebar-link">Promise</a></li><li><a href="/knowledge-database/web-learning/js/generator.html" class="sidebar-link">生成器</a></li><li><a href="/knowledge-database/web-learning/js/performance.html" class="sidebar-link">程序性能</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h3 id="分块的程序"><a href="#分块的程序" class="header-anchor">#</a> 分块的程序</h3> <p>只要把一段代码包装成一个函数，并指定它在响应某个事件（定时器、鼠标点击、Ajax响应等）时执行，你就是在代码中创建了一个将来执行的块，也由此在这个程序中引入了异步机制。</p> <h3 id="事件循环"><a href="#事件循环" class="header-anchor">#</a> 事件循环</h3> <p>用户交互、IO和定时器会向事件队列中加入事件。<br>
+JavaScript引擎本身所做的只不过是在需要的时候，在给定的任意时刻执行程序中的单个代码块。<br>
+“需要”，谁的需要？这正是关键所在！<br>
+事件循环伪代码示例：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// eventLoop是一个用作队列（先进先出）的数组</span>
+<span class="token keyword">var</span> eventLoop <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> myevent<span class="token punctuation">;</span>
+
+<span class="token comment">// 永远执行</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 一次tick </span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>eventLoop<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 拿到队列中的下一个事件</span>
+    myevent <span class="token operator">=</span> eventLoop<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 执行下一个事件</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      <span class="token function">myevent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">reportError</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>有一个用while循环实现的持续运行的循环，循环的每一轮称为一个tick。对每个tick而言，如果在队列中有等待事件，那么就会从队列中摘下一个事件并执行。这些事件就是你的回调函数。</p> <div class="custom-block tip"><p class="custom-block-title">提示</p> <p>setTimeout(..)并没有把你的回调函数挂在事件循环队列中。它所做的是设定一个定时器。当定时器到时后，环境会把你的回调函数放在事件循环中，这样，在未来某个时刻的tick会摘下并执行这个回调。</p></div> <h3 id="并行线程"><a href="#并行线程" class="header-anchor">#</a> 并行线程</h3> <p>异步是关于现在和将来的时间间隙，而并行是关于能够同时发生的事情。<br>
+并行计算最常见的工具就是进程和线程。进程和线程独立运行，并可能同时运行：在不同的处理器，甚至不同的计算机上，但多个线程能够共享单个进程的内存。<br>
+事件循环把自身的工作分成一个个任务并顺序执行，不允许对共享内存的并行访问和修改。通过分立线程中彼此合作的事件循环，并行和顺序执行可以共存。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  a <span class="token operator">=</span> a <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  a <span class="token operator">=</span> a <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// ajax(..)是某个库中提供的某个Ajax函数</span>
+<span class="token function">ajax</span><span class="token punctuation">(</span><span class="token string">'http://url.1'</span><span class="token punctuation">,</span> foo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">ajax</span><span class="token punctuation">(</span><span class="token string">'http://url.2'</span><span class="token punctuation">,</span> bar<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>由于JavaScript的单线程特性，foo()（以及bar()）中的代码具有原子性。也就是说，一旦foo()开始运行，它的所有代码都会在bar()中的任意代码运行之前完成，或者相反。这称为完整运行（run-to-completion）特性。</p> <h3 id="任务"><a href="#任务" class="header-anchor">#</a> 任务</h3> <p>在ES6中，有一个新的概念建立在事件循环队列之上，叫作任务队列（job queue）。<br>
+任务队列：它是挂在事件循环队列的每个tick之后的一个队列。在事件循环的每个tick中，可能出现的异步动作不会导致一个完整的新事件添加到事件循环队列中，而会在当前tick的任务队列末尾添加一个项目（一个任务）。</p> <p>事件循环队列类似于一个游乐园游戏：玩过了一个游戏之后，你需要重新到队尾排队才能再玩一次。而任务队列类似于玩过了游戏之后，插队接着继续玩。</p> <h3 id="小结"><a href="#小结" class="header-anchor">#</a> 小结</h3> <p>一旦有事件需要运行，事件循环就会运行，直到队列清空。事件循环的每一轮称为一个tick。<strong>用户交互、IO</strong>和<strong>定时器</strong>会向事件队列中加入事件。<br>
+任意时刻，一次只能从队列中处理一个事件。执行事件的时候，可能直接或间接地引发一个或多个后续事件。并发是指两个或多个事件链随时间发展交替执行，以至于从更高的层次来看，就像是同时在运行（尽管在任意时刻只处理一个事件）。<br>
+通常需要对这些并发执行的“进程”（有别于操作系统中的进程概念）进行某种形式的交互协调，比如需要确保执行顺序或者需要防止竞态出现。这些“进程”也可以通过把自身分割为更小的块，以便其他“进程”插入进来。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/knowledge-database/web-learning/js/coercion.html" class="prev">
+          强制类型转换
+        </a></span> <span class="next"><a href="/knowledge-database/web-learning/js/callback.html">
+          回调
+        </a>
+        →
+      </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/knowledge-database/assets/js/app.c3ab198b.js" defer></script><script src="/knowledge-database/assets/js/2.20d9929d.js" defer></script><script src="/knowledge-database/assets/js/24.b3e84074.js" defer></script>
+  </body>
+</html>
