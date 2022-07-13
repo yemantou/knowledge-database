@@ -62,7 +62,11 @@ module.exports = {
           {
             text: '后端学习笔记',
             link: '/note/backend/'
-          }
+          },
+          {
+            text: '读书笔记',
+            link: '/note/book/'
+          },
         ]
       },
       { 
