@@ -10,14 +10,14 @@ module.exports = {
     searchPlaceholder: '输入进行搜索',
     subSidebar: 'auto',
     nav: [
-      {
-        text: '文档指南',
-        link: '/guide/'
-      },
-      { 
-        text: '自动构建',
-        link: '/auto-build/'
-      },
+      // {
+      //   text: '文档指南',
+      //   link: '/guide/'
+      // },
+      // { 
+      //   text: '自动构建',
+      //   link: '/auto-build/'
+      // },
       {
         text: '前端学习',
         items: [
@@ -56,17 +56,17 @@ module.exports = {
         text: '笔记',
         items: [
           {
+            text: '读书笔记',
+            link: '/note/book/'
+          },
+          {
             text: '前端学习笔记',
             link: '/note/web/'
           },
           {
             text: '后端学习笔记',
             link: '/note/backend/'
-          },
-          {
-            text: '读书笔记',
-            link: '/note/book/'
-          },
+          }
         ]
       },
       { 
