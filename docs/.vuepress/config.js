@@ -49,6 +49,10 @@ module.exports = {
           {
             text: '算法',
             link: '/basic-knowledge/algorithm/'
+          },
+          {
+            text: '设计模式',
+            link: '/basic-knowledge/design-pattern/'
           }
         ]
       },
