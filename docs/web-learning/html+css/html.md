@@ -30,6 +30,6 @@ h1~h6 、 p 、 div 、 em 、 strong 、 span
 相对路径：./（本级），../（上级）   
 
 绝对路径：     
-- 本地绝对路径：
-- 网络绝对路径：
+- 本地绝对路径：E:/demo1/demo2/dem3.jpg
+- 网络绝对路径：https://demo.com.cn/demo1.jpg
 
