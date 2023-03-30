@@ -1,0 +1,20 @@
+{
+  "name": "my-knowledge-database",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/yemantou/knowledge-database.git",
+  "author": "huangyong <huangyong@talkweb.com.cn>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "dependencies": {
+    "global": "^4.4.0",
+    "vue": "2.6.11",
+    "vue-server-renderer": "2.6.11",
+    "vue-template-compiler": "2.6.11",
+    "vuepress": "^1.9.7",
+    "vuepress-plugin-auto-sidebar": "^2.3.2"
+  }
+}
