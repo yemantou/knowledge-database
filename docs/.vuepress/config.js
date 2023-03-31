@@ -103,15 +103,6 @@ module.exports = {
         ]
       },
       {
-        text: '问题记录',
-        items: [
-          {
-            text: '问题列表',
-            link: '/interview/issue/'
-          }
-        ]
-      },
-      {
         text: 'GitHub',
         link: 'https://github.com/yemantou/knowledge-database'
       },
