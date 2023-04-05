@@ -82,7 +82,6 @@ Object.prototype.toString.call(arr); // "[object Array]"
 
 **最完美的深拷贝：**    
 ```js
-// 正则用的少，对正则的学习还不够；只考虑Object、Set、Map、Array、Function这几种引用类型的拷贝
 // 使用Map记录已经被拷贝的变量，解决循环引用（对象内部直接或间接引用自身）
 // 使用WeakMap不阻止垃圾回收
 
