@@ -158,3 +158,6 @@ value 属性：指定的是真正提交的数据。
 <input type="hidden" name="tag" value="100">
 ```
 
+
+## iframe（框架标签）
+
