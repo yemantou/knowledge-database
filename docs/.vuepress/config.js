@@ -30,6 +30,10 @@ module.exports = {
             link: '/note/vue/'
           },
           {
+            text: 'React学习笔记',
+            link: '/note/react/'
+          },
+          {
             text: '后端学习笔记',
             link: '/note/backend/'
           },
