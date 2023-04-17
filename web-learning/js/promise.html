@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Promise | 胖虎拽的知识库</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="个人知识沉淀平台">
+    
+    <link rel="preload" href="/knowledge-database/assets/css/0.styles.b1d7b40f.css" as="style"><link rel="preload" href="/knowledge-database/assets/js/app.924c1f5f.js" as="script"><link rel="preload" href="/knowledge-database/assets/js/2.bbda75de.js" as="script"><link rel="preload" href="/knowledge-database/assets/js/103.532967f8.js" as="script"><link rel="prefetch" href="/knowledge-database/assets/js/10.e45fdfdd.js"><link rel="prefetch" href="/knowledge-database/assets/js/100.1cfd0895.js"><link rel="prefetch" href="/knowledge-database/assets/js/101.e5010172.js"><link rel="prefetch" href="/knowledge-database/assets/js/102.3c017efc.js"><link rel="prefetch" href="/knowledge-database/assets/js/104.4fcffd5d.js"><link rel="prefetch" href="/knowledge-database/assets/js/105.b7a5941f.js"><link rel="prefetch" href="/knowledge-database/assets/js/106.42592395.js"><link rel="prefetch" href="/knowledge-database/assets/js/107.82d2aada.js"><link rel="prefetch" href="/knowledge-database/assets/js/108.e8101912.js"><link rel="prefetch" href="/knowledge-database/assets/js/109.96271f60.js"><link rel="prefetch" href="/knowledge-database/assets/js/11.de12a13e.js"><link rel="prefetch" href="/knowledge-database/assets/js/110.7bcfb816.js"><link rel="prefetch" href="/knowledge-database/assets/js/111.79b236f6.js"><link rel="prefetch" href="/knowledge-database/assets/js/12.766cabce.js"><link rel="prefetch" href="/knowledge-database/assets/js/13.0cdec225.js"><link rel="prefetch" href="/knowledge-database/assets/js/14.de6e6fdf.js"><link rel="prefetch" href="/knowledge-database/assets/js/15.49f8f4b8.js"><link rel="prefetch" href="/knowledge-database/assets/js/16.812a46a2.js"><link rel="prefetch" href="/knowledge-database/assets/js/17.aea4b081.js"><link rel="prefetch" href="/knowledge-database/assets/js/18.d985fdba.js"><link rel="prefetch" href="/knowledge-database/assets/js/19.8786b85c.js"><link rel="prefetch" href="/knowledge-database/assets/js/20.df8850f0.js"><link rel="prefetch" href="/knowledge-database/assets/js/21.e6c05285.js"><link rel="prefetch" href="/knowledge-database/assets/js/22.b21e9552.js"><link rel="prefetch" href="/knowledge-database/assets/js/23.74708599.js"><link rel="prefetch" href="/knowledge-database/assets/js/24.aaf210ba.js"><link rel="prefetch" href="/knowledge-database/assets/js/25.ae653910.js"><link rel="prefetch" href="/knowledge-database/assets/js/26.f4a807f3.js"><link rel="prefetch" href="/knowledge-database/assets/js/27.2964e929.js"><link rel="prefetch" href="/knowledge-database/assets/js/28.fce0d9e9.js"><link rel="prefetch" href="/knowledge-database/assets/js/29.43d83ebe.js"><link rel="prefetch" href="/knowledge-database/assets/js/3.08a13483.js"><link rel="prefetch" href="/knowledge-database/assets/js/30.d81862e0.js"><link rel="prefetch" href="/knowledge-database/assets/js/31.ad732638.js"><link rel="prefetch" href="/knowledge-database/assets/js/32.3aff3d81.js"><link rel="prefetch" href="/knowledge-database/assets/js/33.c32d987c.js"><link rel="prefetch" href="/knowledge-database/assets/js/34.49676f66.js"><link rel="prefetch" href="/knowledge-database/assets/js/35.411724d2.js"><link rel="prefetch" href="/knowledge-database/assets/js/36.547d9f67.js"><link rel="prefetch" href="/knowledge-database/assets/js/37.b864c508.js"><link rel="prefetch" href="/knowledge-database/assets/js/38.ca094b07.js"><link rel="prefetch" href="/knowledge-database/assets/js/39.688d0c5b.js"><link rel="prefetch" href="/knowledge-database/assets/js/4.c7c6bab9.js"><link rel="prefetch" href="/knowledge-database/assets/js/40.1b4fd5b1.js"><link rel="prefetch" href="/knowledge-database/assets/js/41.7ccd729e.js"><link rel="prefetch" href="/knowledge-database/assets/js/42.a94bc57e.js"><link rel="prefetch" href="/knowledge-database/assets/js/43.624da0a7.js"><link rel="prefetch" href="/knowledge-database/assets/js/44.463bb83d.js"><link rel="prefetch" href="/knowledge-database/assets/js/45.c1fbdeb2.js"><link rel="prefetch" href="/knowledge-database/assets/js/46.b27e3cc8.js"><link rel="prefetch" href="/knowledge-database/assets/js/47.ace33337.js"><link rel="prefetch" href="/knowledge-database/assets/js/48.3d63a283.js"><link rel="prefetch" href="/knowledge-database/assets/js/49.6b0d4a2a.js"><link rel="prefetch" href="/knowledge-database/assets/js/5.5dda2e3b.js"><link rel="prefetch" href="/knowledge-database/assets/js/50.2f8865f7.js"><link rel="prefetch" href="/knowledge-database/assets/js/51.3fc69964.js"><link rel="prefetch" href="/knowledge-database/assets/js/52.f82d8eeb.js"><link rel="prefetch" href="/knowledge-database/assets/js/53.0b9e8d6c.js"><link rel="prefetch" href="/knowledge-database/assets/js/54.8a86557b.js"><link rel="prefetch" href="/knowledge-database/assets/js/55.ba6228b9.js"><link rel="prefetch" href="/knowledge-database/assets/js/56.661c9e92.js"><link rel="prefetch" href="/knowledge-database/assets/js/57.69740593.js"><link rel="prefetch" href="/knowledge-database/assets/js/58.aa4cdb9d.js"><link rel="prefetch" href="/knowledge-database/assets/js/59.c4f8515c.js"><link rel="prefetch" href="/knowledge-database/assets/js/6.089cfa4f.js"><link rel="prefetch" href="/knowledge-database/assets/js/60.56826f8a.js"><link rel="prefetch" href="/knowledge-database/assets/js/61.4bc38ec4.js"><link rel="prefetch" href="/knowledge-database/assets/js/62.4da412ea.js"><link rel="prefetch" href="/knowledge-database/assets/js/63.69cb0174.js"><link rel="prefetch" href="/knowledge-database/assets/js/64.233fe0da.js"><link rel="prefetch" href="/knowledge-database/assets/js/65.538f7914.js"><link rel="prefetch" href="/knowledge-database/assets/js/66.295dfa2a.js"><link rel="prefetch" href="/knowledge-database/assets/js/67.9ea9bc7b.js"><link rel="prefetch" href="/knowledge-database/assets/js/68.8caf8132.js"><link rel="prefetch" href="/knowledge-database/assets/js/69.240bbd8e.js"><link rel="prefetch" href="/knowledge-database/assets/js/7.350ee2fa.js"><link rel="prefetch" href="/knowledge-database/assets/js/70.968b1b88.js"><link rel="prefetch" href="/knowledge-database/assets/js/71.09efc455.js"><link rel="prefetch" href="/knowledge-database/assets/js/72.94547c47.js"><link rel="prefetch" href="/knowledge-database/assets/js/73.6b1589e4.js"><link rel="prefetch" href="/knowledge-database/assets/js/74.9ce8b795.js"><link rel="prefetch" href="/knowledge-database/assets/js/75.b879d51e.js"><link rel="prefetch" href="/knowledge-database/assets/js/76.59df39f9.js"><link rel="prefetch" href="/knowledge-database/assets/js/77.95d494fd.js"><link rel="prefetch" href="/knowledge-database/assets/js/78.4ae35748.js"><link rel="prefetch" href="/knowledge-database/assets/js/79.4811ba1e.js"><link rel="prefetch" href="/knowledge-database/assets/js/8.9238566b.js"><link rel="prefetch" href="/knowledge-database/assets/js/80.54ff1cc3.js"><link rel="prefetch" href="/knowledge-database/assets/js/81.61e0fd6f.js"><link rel="prefetch" href="/knowledge-database/assets/js/82.a1442658.js"><link rel="prefetch" href="/knowledge-database/assets/js/83.6f37e91b.js"><link rel="prefetch" href="/knowledge-database/assets/js/84.c36d796c.js"><link rel="prefetch" href="/knowledge-database/assets/js/85.c350ae7b.js"><link rel="prefetch" href="/knowledge-database/assets/js/86.b151c75e.js"><link rel="prefetch" href="/knowledge-database/assets/js/87.c642aca5.js"><link rel="prefetch" href="/knowledge-database/assets/js/88.0fe1f2b2.js"><link rel="prefetch" href="/knowledge-database/assets/js/89.87eb46ca.js"><link rel="prefetch" href="/knowledge-database/assets/js/9.6ed8cf69.js"><link rel="prefetch" href="/knowledge-database/assets/js/90.258109c2.js"><link rel="prefetch" href="/knowledge-database/assets/js/91.3ba829fc.js"><link rel="prefetch" href="/knowledge-database/assets/js/92.3f9eb5db.js"><link rel="prefetch" href="/knowledge-database/assets/js/93.30363f2c.js"><link rel="prefetch" href="/knowledge-database/assets/js/94.a4430c39.js"><link rel="prefetch" href="/knowledge-database/assets/js/95.b8f4a838.js"><link rel="prefetch" href="/knowledge-database/assets/js/96.dad31c68.js"><link rel="prefetch" href="/knowledge-database/assets/js/97.844fa4c3.js"><link rel="prefetch" href="/knowledge-database/assets/js/98.46f13e3c.js"><link rel="prefetch" href="/knowledge-database/assets/js/99.62c4505c.js">
+    <link rel="stylesheet" href="/knowledge-database/assets/css/0.styles.b1d7b40f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/knowledge-database/" class="home-link router-link-active"><!----> <span class="site-name">胖虎拽的知识库</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/knowledge-database/guide/" class="nav-link">
+  文档指南
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记" class="dropdown-title"><span class="title">笔记</span> <span class="arrow down"></span></button> <button type="button" aria-label="笔记" class="mobile-dropdown-title"><span class="title">笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/note/web/" class="nav-link">
+  前端学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/vue/" class="nav-link">
+  Vue学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/react/" class="nav-link">
+  React学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/backend/" class="nav-link">
+  后端学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/review/" class="nav-link">
+  前端笔记（待被合并）
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/book/" class="nav-link">
+  读书笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端学习" class="dropdown-title"><span class="title">前端学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端学习" class="mobile-dropdown-title"><span class="title">前端学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/js/" class="nav-link router-link-active">
+  你不知道的JS-学习
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/js-advanced/" class="nav-link">
+  JS高级程序设计-学习
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/js-design-pattern/" class="nav-link">
+  JS-设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/html+css/" class="nav-link">
+  HTML+CSS
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/vue/" class="nav-link">
+  Vue
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="计算机基础知识" class="dropdown-title"><span class="title">计算机基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="计算机基础知识" class="mobile-dropdown-title"><span class="title">计算机基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/computer-networks/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/data-structure/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/algorithm/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/design-pattern/" class="nav-link">
+  设计模式
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="文章" class="dropdown-title"><span class="title">文章</span> <span class="arrow down"></span></button> <button type="button" aria-label="文章" class="mobile-dropdown-title"><span class="title">文章</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/article/js/" class="nav-link">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/article/component-lib/" class="nav-link">
+  前端组件库
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/yemantou/knowledge-database" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/knowledge-database/guide/" class="nav-link">
+  文档指南
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记" class="dropdown-title"><span class="title">笔记</span> <span class="arrow down"></span></button> <button type="button" aria-label="笔记" class="mobile-dropdown-title"><span class="title">笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/note/web/" class="nav-link">
+  前端学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/vue/" class="nav-link">
+  Vue学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/react/" class="nav-link">
+  React学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/backend/" class="nav-link">
+  后端学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/review/" class="nav-link">
+  前端笔记（待被合并）
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/book/" class="nav-link">
+  读书笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端学习" class="dropdown-title"><span class="title">前端学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端学习" class="mobile-dropdown-title"><span class="title">前端学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/js/" class="nav-link router-link-active">
+  你不知道的JS-学习
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/js-advanced/" class="nav-link">
+  JS高级程序设计-学习
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/js-design-pattern/" class="nav-link">
+  JS-设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/html+css/" class="nav-link">
+  HTML+CSS
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/vue/" class="nav-link">
+  Vue
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="计算机基础知识" class="dropdown-title"><span class="title">计算机基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="计算机基础知识" class="mobile-dropdown-title"><span class="title">计算机基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/computer-networks/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/data-structure/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/algorithm/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/design-pattern/" class="nav-link">
+  设计模式
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="文章" class="dropdown-title"><span class="title">文章</span> <span class="arrow down"></span></button> <button type="button" aria-label="文章" class="mobile-dropdown-title"><span class="title">文章</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/article/js/" class="nav-link">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/article/component-lib/" class="nav-link">
+  前端组件库
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/yemantou/knowledge-database" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>JS 🙃</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/knowledge-database/web-learning/js/" aria-current="page" class="sidebar-link">你不知道的JS-学习</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>你不知道的JS</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/knowledge-database/web-learning/js/scope.html" class="sidebar-link">作用域是什么</a></li><li><a href="/knowledge-database/web-learning/js/scope-model.html" class="sidebar-link">作用域（两种主要的工作模型）</a></li><li><a href="/knowledge-database/web-learning/js/function-block-scope.html" class="sidebar-link">函数作用域和块作用域</a></li><li><a href="/knowledge-database/web-learning/js/lift.html" class="sidebar-link">提升</a></li><li><a href="/knowledge-database/web-learning/js/scope-closure.html" class="sidebar-link">作用域闭包</a></li><li><a href="/knowledge-database/web-learning/js/this.html" class="sidebar-link">this</a></li><li><a href="/knowledge-database/web-learning/js/object.html" class="sidebar-link">对象</a></li><li><a href="/knowledge-database/web-learning/js/mix-object-class.html" class="sidebar-link">混合对象“类”</a></li><li><a href="/knowledge-database/web-learning/js/prototype.html" class="sidebar-link">原型</a></li><li><a href="/knowledge-database/web-learning/js/behavior-delegating.html" class="sidebar-link">行为委托</a></li><li><a href="/knowledge-database/web-learning/js/currying.html" class="sidebar-link">柯里化</a></li><li><a href="/knowledge-database/web-learning/js/symbol.html" class="sidebar-link">Symbol</a></li><li><a href="/knowledge-database/web-learning/js/new.html" class="sidebar-link">new</a></li><li><a href="/knowledge-database/web-learning/js/class-object.html" class="sidebar-link">JS的类与对象</a></li><li><a href="/knowledge-database/web-learning/js/arguments.html" class="sidebar-link">Arguments 对象</a></li><li><a href="/knowledge-database/web-learning/js/type-syntax.html" class="sidebar-link">类型和语法</a></li><li><a href="/knowledge-database/web-learning/js/native-function.html" class="sidebar-link">原生函数</a></li><li><a href="/knowledge-database/web-learning/js/coercion.html" class="sidebar-link">强制类型转换</a></li><li><a href="/knowledge-database/web-learning/js/async.html" class="sidebar-link">异步</a></li><li><a href="/knowledge-database/web-learning/js/callback.html" class="sidebar-link">回调</a></li><li><a href="/knowledge-database/web-learning/js/promise.html" aria-current="page" class="active sidebar-link">Promise</a></li><li><a href="/knowledge-database/web-learning/js/generator.html" class="sidebar-link">生成器</a></li><li><a href="/knowledge-database/web-learning/js/performance.html" class="sidebar-link">程序性能</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h3 id="什么是promise"><a href="#什么是promise" class="header-anchor">#</a> 什么是Promise</h3> <p>不把自己程序的continuation传给第三方，而是希望第三方给我们提供了解其任务何时结束的能力，然后由我们自己的代码来决定下一步做什么，那将会怎样呢？<br>
+这种范式就称为Promise。<br>
+一旦Promise决议，它就永远保持在这个状态。此时它就成为了不变值（immutable value），可以根据需求多次查看。Promise决议后就是外部不可变的值，我们可以安全地把这个值传递给第三方，并确信它不会被有意无意地修改。特别是对于多方查看同一个Promise决议的情况，尤其如此。一方不可能影响另一方对Promise决议的观察结果。不可变性听起来似乎一个学术话题，但实际上这是Promise设计中最基础和最重要的因素，我们不应该随意忽略这一点。<br>
+Promise是一种封装和组合未来值的易于复用的机制。</p> <h4 id="完成事件"><a href="#完成事件" class="header-anchor">#</a> 完成事件</h4> <p>使用回调的话，通知就是任务（foo(..)）调用的回调。而使用Promise的话，我们把这个关系反转了过来，侦听来自foo(..)的事件，然后在得到通知的时候，根据情况继续。<br>
+伪代码：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">foo</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 开始做点可能耗时的工作</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">on</span><span class="token punctuation">(</span>foo <span class="token string">'completion'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 可以进行下一步了！</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">on</span><span class="token punctuation">(</span>foo <span class="token string">'error'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 啊，foo(..)中出错了！</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>调用foo(..)，然后建立了两个事件侦听器，一个用于&quot;completion&quot;，一个用于&quot;error&quot;——foo(..)调用的两种可能结果。从本质上讲，foo(..)并不需要了解调用代码订阅了这些事件，这样就很好地实现了关注点分离。遗憾的是，这样的代码需要JavaScript环境提供某种魔法，而这种环境并不存在（实际上也有点不实际）。以下是在JavaScript中更自然的表达方法：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 开始做点可能耗时的工作</span>
+
+  <span class="token comment">// 构造一个listener事件通知处理对象来返回 </span>
+  <span class="token keyword">return</span> listener<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> evt <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+evt<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'completion'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 可以进行下一步了！</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+evt<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'error'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 啊，foo(..)中出错了！</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>foo(..)显式创建并返回了一个事件订阅对象，调用代码得到这个对象，并在其上注册了两个事件处理函数。</p> <h3 id="promise信任问题"><a href="#promise信任问题" class="header-anchor">#</a> Promise信任问题</h3> <p>Promise提供了一些重要的保护，重新建立了第2章中已经毁掉的异步编码可信任性。<br>
+回顾一下只用回调编码的信任问题。把一个回调传入工具foo(..)时可能出现如下问题：</p> <ul><li>调用回调过早；</li> <li>调用回调过晚（或不被调用）；</li> <li>调用回调次数过少或过多；</li> <li>未能传递所需的环境和参数；</li> <li>吞掉可能出现的错误和异常
+Promise的特性就是专门用来为这些问题提供一个有效的可复用的答案。</li></ul> <h4 id="调用过早"><a href="#调用过早" class="header-anchor">#</a> 调用过早</h4> <p>Promise就不必担心有时同步完成，有时异步完成的问题，因为即使是立即完成的Promise（类似于new Promise(function(resolve){ resolve(42); })）也无法被同步观察到。</p> <h4 id="调用过晚"><a href="#调用过晚" class="header-anchor">#</a> 调用过晚</h4> <p>一个Promise决议后，这个Promise上所有的通过then(..)注册的回调都会在下一个异步时机点上依次被立即调用。这些回调中的任意一个都无法影响或延误对其他回调的调用。</p> <h4 id="回调未调用"><a href="#回调未调用" class="header-anchor">#</a> 回调未调用</h4> <p>没有任何东西（甚至JavaScript错误）能阻止Promise向你通知它的决议（如果它决议了的话）。如果你对一个Promise注册了一个完成回调和一个拒绝回调，那么Promise在决议时总是会调用其中的一个。<br>
+但是，如果Promise本身永远不被决议呢？即使这样，Promise也提供了解决方案，其使用了一种称为竞态的高级抽象机制。</p> <h4 id="调用次数过少或过多"><a href="#调用次数过少或过多" class="header-anchor">#</a> 调用次数过少或过多</h4> <p>由于Promise只能被决议一次，所以任何通过then(..)注册的（每个）回调就只会被调用一次。<br>
+当然，如果你把同一个回调注册了不止一次（比如p.then(f); p.then(f);），那它被调用的次数就会和注册次数相同。</p> <h4 id="未能传递参数-环境值"><a href="#未能传递参数-环境值" class="header-anchor">#</a> 未能传递参数/环境值</h4> <p>Promise至多只能有一个决议值（完成或拒绝）。<br>
+如果你没有用任何值显式决议，那么这个值就是undefined，这是JavaScript常见的处理方式。但不管这个值是什么，无论当前或未来，它都会被传给所有注册的（且适当的完成或拒绝）回调。</p> <h4 id="吞掉错误或异常"><a href="#吞掉错误或异常" class="header-anchor">#</a> 吞掉错误或异常</h4> <p>如果拒绝一个Promise并给出一个理由（也就是一个出错消息），这个值就会被传给拒绝回调。<br>
+如果Promise完成后在查看结果时（then(..)注册的回调中）出现了JavaScript异常错误会发现，对它们的处理方式还是有点出乎意料，深入才能理解：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+p<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+  <span class="token keyword">function</span> <span class="token function">fulfilled</span><span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    foo<span class="token punctuation">.</span><span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 永远不会到达此处</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">function</span> <span class="token function">rejected</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 永远不会到达此处</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>Promise一旦决议就不可再变。p已经完成为值42，所以之后查看p的决议时，并不能因为出错就把p再变为一个拒绝。</p> <h4 id="是可信任的promise吗"><a href="#是可信任的promise吗" class="header-anchor">#</a> 是可信任的Promise吗</h4> <p>如何能够确定返回的这个东西实际上就是一个可信任的Promise呢？<br>
+从Promise.resolve(..)得到的是一个真正的Promise，是一个可以信任的值。如果你传入的已经是真正的Promise，那么你得到的就是它本身，所以通过Promise.resolve(..)过滤来获得可信任性完全没有坏处。<br>
+对于不确定是否信任的Promise，我们可以使用Promise.resolve(..)：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 不要只是直接这样使用（假设工具为tool(..)）</span>
+<span class="token function">tool</span><span class="token punctuation">(</span><span class="token number">22</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+  <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 应该这样使用</span>
+Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token function">tool</span><span class="token punctuation">(</span><span class="token number">22</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+  <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>还有一个好处是：这样做很容易把函数调用规范为定义良好的异步任务。如果tool(22)有时会返回一个立即值，有时会返回Promise，那么Promise.resolve(tool(22))就能够保证总会返回一个Promise结果。</p> <h3 id="链式流"><a href="#链式流" class="header-anchor">#</a> 链式流</h3> <p>Promise并不只是一个单步执行this-then-that操作的机制，可以把多个Promise连接到一起以表示一系列异步步骤。</p> <ul><li>每次你对Promise调用then(..)，它都会创建并返回一个新的Promise，我们可以将其链接起来；</li> <li>不管从then(..)调用的完成回调（第一个参数）返回的值是什么，它都会被自动设置为被链接Promise（第一点中的）的完成。<br>
+错误可以继续沿着Promise链传播下去，直到遇到显式定义的拒绝处理函数。</li></ul> <p>使链式流程控制可行的Promise固有特性：</p> <ul><li>调用Promise的then(..)会自动创建一个新的Promise从调用返回。</li> <li>在完成或拒绝处理函数内部，如果返回一个值或抛出一个异常，新返回的（可链接的）Promise就相应地决议。</li> <li>如果完成或拒绝处理函数返回一个Promise，它将会被展开，这样一来，不管它的决议值是什么，都会成为当前then(..)返回的链接Promise的决议值。</li></ul> <p>术语：决议（resolve）、完成（fulfill）和拒绝（reject）</p> <h3 id="错误处理"><a href="#错误处理" class="header-anchor">#</a> 错误处理</h3> <p>try..catch很好，但是无法跨异步操作工作。<br>
+Promise没有采用流行的error-first回调设计风格，而是使用了分离回调（split-callback）风格。一个回调用于完成情况，一个回调用于拒绝情况。</p> <h4 id="处理未捕获的情况"><a href="#处理未捕获的情况" class="header-anchor">#</a> 处理未捕获的情况</h4> <p>下面这种错误情况如何处理呢？</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+p<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+  <span class="token keyword">function</span> <span class="token function">fulfilled</span><span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    foo<span class="token punctuation">.</span><span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 永远不会到达此处</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">function</span> <span class="token function">rejected</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 永远不会到达此处</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>有一些Promise库增加了一些方法：注册一个类似于“全局未处理拒绝”处理函数的东西，这样就不会抛出全局错误，而是调用这个函数。<br>
+它们辨识未捕获错误的方法是定义一个某个时长的定时器，比如3秒钟，在拒绝的时刻启动。如果Promise被拒绝，而在定时器触发之前都没有错误处理函数被注册，那它就会假定你不会注册处理函数，进而就是未被捕获错误。（并不太建议使用）</p> <h3 id="promise模式"><a href="#promise模式" class="header-anchor">#</a> Promise模式</h3> <ol><li>Promise.all([ .. ])
+传给Promise.all([ .. ])的数组中的值可以是Promise、thenable，甚至是立即值。就本质而言，列表中的每个值都会通过Promise. resolve(..)过滤，以确保要等待的是一个真正的Promise，所以立即值会被规范化为为这个值构建的Promise。如果数组是空的，主Promise就会立即完成。<br>
+从Promise.all([ .. ])返回的主promise在且仅在所有的成员promise都完成后才会完成。如果这些promise中有任何一个被拒绝的话，主Promise.all([ .. ])promise就会立即被拒绝，并丢弃来自其他所有promise的全部结果。</li> <li>Promise.race([ .. ])（只响应“第一个跨过终点线的Promise”，而抛弃其他Promise。）<br>
+一旦有任何一个Promise决议为完成，Promise.race([ .. ])就会完成；一旦有任何一个Promise决议为拒绝，它就会拒绝。<br>
+如果传入了一个空数组，主race([..]) Promise永远不会决议，而不是立即决议。</li> <li>all([ .. ])和race([ .. ])的变体（有些Promise抽象库提供了这些支持，但也可以使用Promise、race([ .. ])和all([ .. ])这些机制，你自己来实现它们）：
+<ul><li>none([ .. ])<br>
+这个模式类似于all([ .. ])，不过完成和拒绝的情况互换了。所有的Promise都要被拒绝，即拒绝转化为完成值，反之亦然。</li> <li>any([ .. ])<br>
+这个模式与all([ .. ])类似，但是会忽略拒绝，所以只需要完成一个而不是全部。</li> <li>first([ .. ])<br>
+这个模式类似于与any([ .. ])的竞争，即只要第一个Promise完成，它就会忽略后续的任何拒绝和完成。</li> <li>last([ .. ])
+这个模式类似于first([ .. ])，但却是只有最后一个完成胜出。</li></ul></li></ol> <h4 id="并发迭代"><a href="#并发迭代" class="header-anchor">#</a> 并发迭代</h4> <p>有些时候会需要在一列Promise中迭代，并对所有Promise都执行某个任务，非常类似于对同步数组可以做的那样（比如forEach(..)、map(..)、some(..)和every(..)）。<br>
+例如map(..)，接收一个数组的值（可以是Promise或其他任何值），外加要在每个值上运行一个函数（任务）作为参数。map(..)本身返回一个promise，其完成值是一个数组，该数组（保持映射顺序）保存任务执行之后的异步完成值：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>Promise<span class="token punctuation">.</span>map<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  Promise<span class="token punctuation">.</span><span class="token function-variable function">map</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">vals<span class="token punctuation">,</span> cb</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 一个等待列表所有promise的新promise</span>
+    <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span>
+      <span class="token comment">// 一般数组map(..)把值数组转换为promise数组</span>
+      vals<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 用val异步map之后决议（resolve）的新promise替换val</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">cb</span><span class="token punctuation">(</span>val<span class="token punctuation">,</span> resolve<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span> 
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="promise-api概述"><a href="#promise-api概述" class="header-anchor">#</a> Promise API概述</h3> <h4 id="new-promise-构造器"><a href="#new-promise-构造器" class="header-anchor">#</a> new Promise(..)构造器</h4> <p>Promise(..)必须和new一起使用，并且必须提供一个函数回调：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// resolve(..)用于决议/完成这个promise</span>
+  <span class="token comment">// reject(..)用于拒绝这个promise</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="promise-resolve-和promise-reject"><a href="#promise-resolve-和promise-reject" class="header-anchor">#</a> Promise.resolve(..)和Promise.reject(..)</h4> <ul><li>Promise.reject(..)<br>
+创建一个已被拒绝的Promise的快捷方式是使用Promise.reject(..)。</li> <li>Promise.resolve(..)<br>
+Promise.resolve(..)常用于创建一个已完成的Promise，使用方式与Promise.reject(..)类似。但是，Promise.resolve(..)也会展开thenable值。<br>
+如果传入的是真正的Promise, Promise.resolve(..)什么都不会做，只会直接把这个值返回。</li></ul> <h4 id="then-和catch"><a href="#then-和catch" class="header-anchor">#</a> then(..)和catch(..)</h4> <p>Promise决议之后，立即会调用这两个处理函数之一，但不会两个都调用，而且总是异步调用。</p> <div class="custom-block tip"><p class="custom-block-title">提示</p> <p>then 的第二个参数捕获 Promise 的异常，catch 除此之外还会捕获 then 的第一个参数执行时抛出的异常：</p> <ul><li>当Promise是reject时，catch捕获reject</li> <li>当Promise是resolve时，catch捕获.then中抛出的异常</li></ul></div> <ul><li>then(..)<br>
+then(..)接受一个或两个参数：第一个用于完成回调，第二个用于拒绝回调。</li> <li>catch(..)<br>
+catch(..)只接受一个拒绝回调作为参数，并自动替换默认完成回调，它等价于then(null, ..)。<br>
+then(..)和catch(..)也会创建并返回一个新的promise，这个promise可以用于实现Promise链式流程控制。</li></ul> <h4 id="promise-all-和promise-race"><a href="#promise-all-和promise-race" class="header-anchor">#</a> Promise.all([ .. ])和Promise.race([ .. ])</h4> <p>Promise.all([ .. ])和Promise.race([ .. ])都会创建一个Promise作为它们的返回值。这个promise的决议完全由传入的promise数组控制。<br>
+Promise.all([ .. ])：所有人都到齐了才开门。<br>
+Promise.race([ .. ])：第一个到达者打开门闩通过。</p> <div class="custom-block danger"><p class="custom-block-title">警告</p> <p>向Promise.all([ .. ])传入空数组，它会立即完成，但Promise. race([ .. ])会挂住，且永远不会决议。</p></div> <h3 id="promise局限性"><a href="#promise局限性" class="header-anchor">#</a> Promise局限性</h3> <h4 id="顺序错误处理"><a href="#顺序错误处理" class="header-anchor">#</a> 顺序错误处理</h4> <p>Promise的设计局限性（具体来说，就是它们链接的方式）造成了一个让人很容易中招的陷阱，即Promise链中的错误很容易被无意中默默忽略掉。<br>
+例如一个没有错误处理函数的Promise链，链中任何地方的任何错误都会在链中一直传播下去，直到被查看（通过在某个步骤注册拒绝处理函数）。</p> <h4 id="单一值"><a href="#单一值" class="header-anchor">#</a> 单一值</h4> <p>Promise只能有一个完成值或一个拒绝理由。在更复杂的场景中，这是一种局限。<br>
+一般的建议是构造一个值封装（比如一个对象或数组）来保持这样的多个信息。这个解决方案可以起作用，但要在Promise链中的每一步都进行封装和解封，就十分丑陋和笨重了。</p> <ol><li>分裂值<br>
+可以/应该把问题分解为两个或更多Promise的信号。例如有一个工具foo(..)，它可以异步产生两个值（x和y）：<div class="language-js extra-class"><pre class="language-js"><code> <span class="token keyword">function</span> <span class="token function">getY</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span> <span class="token operator">*</span> x<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+
+ <span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token parameter">bar<span class="token punctuation">,</span> baz</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">var</span> x <span class="token operator">=</span> bar <span class="token operator">*</span> baz<span class="token punctuation">;</span>
+
+   <span class="token keyword">return</span> <span class="token function">getY</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+     <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token comment">// 返回封装两个值的数组</span>
+       <span class="token keyword">return</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">]</span>
+     <span class="token punctuation">}</span>
+   <span class="token punctuation">)</span>
+ <span class="token punctuation">}</span>
+
+ <span class="token function">foo</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+   <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">msgs</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token keyword">var</span> x <span class="token operator">=</span> msgs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+     <span class="token keyword">var</span> y <span class="token operator">=</span> msgs<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 200 599</span>
+   <span class="token punctuation">}</span>
+ <span class="token punctuation">)</span>
+</code></pre></div>可以把每个值封装到它自己的promise：<div class="language-js extra-class"><pre class="language-js"><code> <span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token parameter">bar<span class="token punctuation">,</span> baz</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">var</span> x <span class="token operator">=</span> bar <span class="token operator">*</span> baz<span class="token punctuation">;</span>
+   <span class="token comment">// 返回两个promise</span>
+   retrun <span class="token punctuation">[</span>
+     Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span>
+     <span class="token function">getY</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+   <span class="token punctuation">]</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+
+ Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+   <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">msgs</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token keyword">var</span> x <span class="token operator">=</span> msgs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+     <span class="token keyword">var</span> y <span class="token operator">=</span> msgs<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 200 599</span>
+   <span class="token punctuation">}</span>
+ <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div>这种方法更符合Promise的设计理念。如果以后需要重构代码把对x和y的计算分开，这种方法就简单得多。由调用代码来决定如何安排这两个promise，而不是把这种细节放在foo(..)内部抽象，这样更整洁也更灵活。</li></ol> <h4 id="单决议"><a href="#单决议" class="header-anchor">#</a> 单决议</h4> <p>Promise最本质的一个特征是：Promise只能被决议一次（完成或拒绝）。</p> <h4 id="惯性"><a href="#惯性" class="header-anchor">#</a> 惯性</h4> <p>如果已经有大量的基于回调的代码，那么保持编码风格不变要简单得多。<br>
+自己实现一个支持Promise而不是基于回调的Ajax工具，可以称之为request(..)：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>Promise<span class="token punctuation">.</span>wrap<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  Promise<span class="token punctuation">.</span><span class="token function-variable function">wrap</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">fn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>arguments<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> <span class="token function-variable function">callback</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">reject</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token function">resolve</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token function">fn</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>
+          <span class="token keyword">null</span><span class="token punctuation">,</span>
+          args<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 模拟的一个ajax请求</span>
+<span class="token keyword">const</span> <span class="token function-variable function">ajax</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">url<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    callback <span class="token operator">&amp;&amp;</span> <span class="token function">callback</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'成功'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 使用回调的方式</span>
+<span class="token function">ajax</span><span class="token punctuation">(</span><span class="token string">'http://url.1/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 成功</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 将模拟的ajax请求转化为Promise</span>
+<span class="token keyword">const</span> request <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">wrap</span><span class="token punctuation">(</span>ajax<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">request</span><span class="token punctuation">(</span><span class="token string">'http://url.2/'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+  <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 成功</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
+</code></pre></div><p>接受一个函数，这个函数需要一个error-first风格的回调作为第一个参数，并返回一个新的函数。返回的函数自动创建一个Promise并返回，并替换回调，连接到Promise完成或拒绝。<br>
+把需要回调的函数封装为支持Promise的函数，这个动作有时被称为“提升”或“Promise工厂化”。</p> <h4 id="无法取消的promise"><a href="#无法取消的promise" class="header-anchor">#</a> 无法取消的Promise</h4> <p>一旦创建了一个Promise并为其注册了完成和/或拒绝处理函数，如果出现某种情况使得这个任务悬而未决的话，你也没有办法从外部停止它的进程。<br>
+这可能会使Promise的一个消费者或观察者影响其他消费者查看这个Promise。这违背了未来值的可信任性（外部不变性），但更坏的是，这是“远隔作用”。实际上会导致你重陷与使用回调同样的噩梦。<br>
+集合在一起的Promise构成的链，可称之为一个“序列”，就是一个流程控制的表达，因此将取消定义在这个抽象层次上是合适的。<br>
+单独的Promise不应该可取消，但是取消一个序列是合理的，因为你不会像对待Promise那样把序列作为一个单独的不变值来传送。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/knowledge-database/web-learning/js/callback.html" class="prev">
+        回调
+      </a></span> <span class="next"><a href="/knowledge-database/web-learning/js/generator.html">
+        生成器
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/knowledge-database/assets/js/app.924c1f5f.js" defer></script><script src="/knowledge-database/assets/js/2.bbda75de.js" defer></script><script src="/knowledge-database/assets/js/103.532967f8.js" defer></script>
+  </body>
+</html>

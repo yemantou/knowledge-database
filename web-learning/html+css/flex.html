@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>flex 布局 | 胖虎拽的知识库</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="个人知识沉淀平台">
+    
+    <link rel="preload" href="/knowledge-database/assets/css/0.styles.b1d7b40f.css" as="style"><link rel="preload" href="/knowledge-database/assets/js/app.924c1f5f.js" as="script"><link rel="preload" href="/knowledge-database/assets/js/2.bbda75de.js" as="script"><link rel="preload" href="/knowledge-database/assets/js/68.8caf8132.js" as="script"><link rel="prefetch" href="/knowledge-database/assets/js/10.e45fdfdd.js"><link rel="prefetch" href="/knowledge-database/assets/js/100.1cfd0895.js"><link rel="prefetch" href="/knowledge-database/assets/js/101.e5010172.js"><link rel="prefetch" href="/knowledge-database/assets/js/102.3c017efc.js"><link rel="prefetch" href="/knowledge-database/assets/js/103.532967f8.js"><link rel="prefetch" href="/knowledge-database/assets/js/104.4fcffd5d.js"><link rel="prefetch" href="/knowledge-database/assets/js/105.b7a5941f.js"><link rel="prefetch" href="/knowledge-database/assets/js/106.42592395.js"><link rel="prefetch" href="/knowledge-database/assets/js/107.82d2aada.js"><link rel="prefetch" href="/knowledge-database/assets/js/108.e8101912.js"><link rel="prefetch" href="/knowledge-database/assets/js/109.96271f60.js"><link rel="prefetch" href="/knowledge-database/assets/js/11.de12a13e.js"><link rel="prefetch" href="/knowledge-database/assets/js/110.7bcfb816.js"><link rel="prefetch" href="/knowledge-database/assets/js/111.79b236f6.js"><link rel="prefetch" href="/knowledge-database/assets/js/12.766cabce.js"><link rel="prefetch" href="/knowledge-database/assets/js/13.0cdec225.js"><link rel="prefetch" href="/knowledge-database/assets/js/14.de6e6fdf.js"><link rel="prefetch" href="/knowledge-database/assets/js/15.49f8f4b8.js"><link rel="prefetch" href="/knowledge-database/assets/js/16.812a46a2.js"><link rel="prefetch" href="/knowledge-database/assets/js/17.aea4b081.js"><link rel="prefetch" href="/knowledge-database/assets/js/18.d985fdba.js"><link rel="prefetch" href="/knowledge-database/assets/js/19.8786b85c.js"><link rel="prefetch" href="/knowledge-database/assets/js/20.df8850f0.js"><link rel="prefetch" href="/knowledge-database/assets/js/21.e6c05285.js"><link rel="prefetch" href="/knowledge-database/assets/js/22.b21e9552.js"><link rel="prefetch" href="/knowledge-database/assets/js/23.74708599.js"><link rel="prefetch" href="/knowledge-database/assets/js/24.aaf210ba.js"><link rel="prefetch" href="/knowledge-database/assets/js/25.ae653910.js"><link rel="prefetch" href="/knowledge-database/assets/js/26.f4a807f3.js"><link rel="prefetch" href="/knowledge-database/assets/js/27.2964e929.js"><link rel="prefetch" href="/knowledge-database/assets/js/28.fce0d9e9.js"><link rel="prefetch" href="/knowledge-database/assets/js/29.43d83ebe.js"><link rel="prefetch" href="/knowledge-database/assets/js/3.08a13483.js"><link rel="prefetch" href="/knowledge-database/assets/js/30.d81862e0.js"><link rel="prefetch" href="/knowledge-database/assets/js/31.ad732638.js"><link rel="prefetch" href="/knowledge-database/assets/js/32.3aff3d81.js"><link rel="prefetch" href="/knowledge-database/assets/js/33.c32d987c.js"><link rel="prefetch" href="/knowledge-database/assets/js/34.49676f66.js"><link rel="prefetch" href="/knowledge-database/assets/js/35.411724d2.js"><link rel="prefetch" href="/knowledge-database/assets/js/36.547d9f67.js"><link rel="prefetch" href="/knowledge-database/assets/js/37.b864c508.js"><link rel="prefetch" href="/knowledge-database/assets/js/38.ca094b07.js"><link rel="prefetch" href="/knowledge-database/assets/js/39.688d0c5b.js"><link rel="prefetch" href="/knowledge-database/assets/js/4.c7c6bab9.js"><link rel="prefetch" href="/knowledge-database/assets/js/40.1b4fd5b1.js"><link rel="prefetch" href="/knowledge-database/assets/js/41.7ccd729e.js"><link rel="prefetch" href="/knowledge-database/assets/js/42.a94bc57e.js"><link rel="prefetch" href="/knowledge-database/assets/js/43.624da0a7.js"><link rel="prefetch" href="/knowledge-database/assets/js/44.463bb83d.js"><link rel="prefetch" href="/knowledge-database/assets/js/45.c1fbdeb2.js"><link rel="prefetch" href="/knowledge-database/assets/js/46.b27e3cc8.js"><link rel="prefetch" href="/knowledge-database/assets/js/47.ace33337.js"><link rel="prefetch" href="/knowledge-database/assets/js/48.3d63a283.js"><link rel="prefetch" href="/knowledge-database/assets/js/49.6b0d4a2a.js"><link rel="prefetch" href="/knowledge-database/assets/js/5.5dda2e3b.js"><link rel="prefetch" href="/knowledge-database/assets/js/50.2f8865f7.js"><link rel="prefetch" href="/knowledge-database/assets/js/51.3fc69964.js"><link rel="prefetch" href="/knowledge-database/assets/js/52.f82d8eeb.js"><link rel="prefetch" href="/knowledge-database/assets/js/53.0b9e8d6c.js"><link rel="prefetch" href="/knowledge-database/assets/js/54.8a86557b.js"><link rel="prefetch" href="/knowledge-database/assets/js/55.ba6228b9.js"><link rel="prefetch" href="/knowledge-database/assets/js/56.661c9e92.js"><link rel="prefetch" href="/knowledge-database/assets/js/57.69740593.js"><link rel="prefetch" href="/knowledge-database/assets/js/58.aa4cdb9d.js"><link rel="prefetch" href="/knowledge-database/assets/js/59.c4f8515c.js"><link rel="prefetch" href="/knowledge-database/assets/js/6.089cfa4f.js"><link rel="prefetch" href="/knowledge-database/assets/js/60.56826f8a.js"><link rel="prefetch" href="/knowledge-database/assets/js/61.4bc38ec4.js"><link rel="prefetch" href="/knowledge-database/assets/js/62.4da412ea.js"><link rel="prefetch" href="/knowledge-database/assets/js/63.69cb0174.js"><link rel="prefetch" href="/knowledge-database/assets/js/64.233fe0da.js"><link rel="prefetch" href="/knowledge-database/assets/js/65.538f7914.js"><link rel="prefetch" href="/knowledge-database/assets/js/66.295dfa2a.js"><link rel="prefetch" href="/knowledge-database/assets/js/67.9ea9bc7b.js"><link rel="prefetch" href="/knowledge-database/assets/js/69.240bbd8e.js"><link rel="prefetch" href="/knowledge-database/assets/js/7.350ee2fa.js"><link rel="prefetch" href="/knowledge-database/assets/js/70.968b1b88.js"><link rel="prefetch" href="/knowledge-database/assets/js/71.09efc455.js"><link rel="prefetch" href="/knowledge-database/assets/js/72.94547c47.js"><link rel="prefetch" href="/knowledge-database/assets/js/73.6b1589e4.js"><link rel="prefetch" href="/knowledge-database/assets/js/74.9ce8b795.js"><link rel="prefetch" href="/knowledge-database/assets/js/75.b879d51e.js"><link rel="prefetch" href="/knowledge-database/assets/js/76.59df39f9.js"><link rel="prefetch" href="/knowledge-database/assets/js/77.95d494fd.js"><link rel="prefetch" href="/knowledge-database/assets/js/78.4ae35748.js"><link rel="prefetch" href="/knowledge-database/assets/js/79.4811ba1e.js"><link rel="prefetch" href="/knowledge-database/assets/js/8.9238566b.js"><link rel="prefetch" href="/knowledge-database/assets/js/80.54ff1cc3.js"><link rel="prefetch" href="/knowledge-database/assets/js/81.61e0fd6f.js"><link rel="prefetch" href="/knowledge-database/assets/js/82.a1442658.js"><link rel="prefetch" href="/knowledge-database/assets/js/83.6f37e91b.js"><link rel="prefetch" href="/knowledge-database/assets/js/84.c36d796c.js"><link rel="prefetch" href="/knowledge-database/assets/js/85.c350ae7b.js"><link rel="prefetch" href="/knowledge-database/assets/js/86.b151c75e.js"><link rel="prefetch" href="/knowledge-database/assets/js/87.c642aca5.js"><link rel="prefetch" href="/knowledge-database/assets/js/88.0fe1f2b2.js"><link rel="prefetch" href="/knowledge-database/assets/js/89.87eb46ca.js"><link rel="prefetch" href="/knowledge-database/assets/js/9.6ed8cf69.js"><link rel="prefetch" href="/knowledge-database/assets/js/90.258109c2.js"><link rel="prefetch" href="/knowledge-database/assets/js/91.3ba829fc.js"><link rel="prefetch" href="/knowledge-database/assets/js/92.3f9eb5db.js"><link rel="prefetch" href="/knowledge-database/assets/js/93.30363f2c.js"><link rel="prefetch" href="/knowledge-database/assets/js/94.a4430c39.js"><link rel="prefetch" href="/knowledge-database/assets/js/95.b8f4a838.js"><link rel="prefetch" href="/knowledge-database/assets/js/96.dad31c68.js"><link rel="prefetch" href="/knowledge-database/assets/js/97.844fa4c3.js"><link rel="prefetch" href="/knowledge-database/assets/js/98.46f13e3c.js"><link rel="prefetch" href="/knowledge-database/assets/js/99.62c4505c.js">
+    <link rel="stylesheet" href="/knowledge-database/assets/css/0.styles.b1d7b40f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/knowledge-database/" class="home-link router-link-active"><!----> <span class="site-name">胖虎拽的知识库</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/knowledge-database/guide/" class="nav-link">
+  文档指南
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记" class="dropdown-title"><span class="title">笔记</span> <span class="arrow down"></span></button> <button type="button" aria-label="笔记" class="mobile-dropdown-title"><span class="title">笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/note/web/" class="nav-link">
+  前端学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/vue/" class="nav-link">
+  Vue学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/react/" class="nav-link">
+  React学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/backend/" class="nav-link">
+  后端学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/review/" class="nav-link">
+  前端笔记（待被合并）
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/book/" class="nav-link">
+  读书笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端学习" class="dropdown-title"><span class="title">前端学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端学习" class="mobile-dropdown-title"><span class="title">前端学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/js/" class="nav-link">
+  你不知道的JS-学习
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/js-advanced/" class="nav-link">
+  JS高级程序设计-学习
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/js-design-pattern/" class="nav-link">
+  JS-设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/html+css/" class="nav-link router-link-active">
+  HTML+CSS
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/vue/" class="nav-link">
+  Vue
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="计算机基础知识" class="dropdown-title"><span class="title">计算机基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="计算机基础知识" class="mobile-dropdown-title"><span class="title">计算机基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/computer-networks/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/data-structure/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/algorithm/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/design-pattern/" class="nav-link">
+  设计模式
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="文章" class="dropdown-title"><span class="title">文章</span> <span class="arrow down"></span></button> <button type="button" aria-label="文章" class="mobile-dropdown-title"><span class="title">文章</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/article/js/" class="nav-link">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/article/component-lib/" class="nav-link">
+  前端组件库
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/yemantou/knowledge-database" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/knowledge-database/guide/" class="nav-link">
+  文档指南
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记" class="dropdown-title"><span class="title">笔记</span> <span class="arrow down"></span></button> <button type="button" aria-label="笔记" class="mobile-dropdown-title"><span class="title">笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/note/web/" class="nav-link">
+  前端学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/vue/" class="nav-link">
+  Vue学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/react/" class="nav-link">
+  React学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/backend/" class="nav-link">
+  后端学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/review/" class="nav-link">
+  前端笔记（待被合并）
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/note/book/" class="nav-link">
+  读书笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端学习" class="dropdown-title"><span class="title">前端学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端学习" class="mobile-dropdown-title"><span class="title">前端学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/js/" class="nav-link">
+  你不知道的JS-学习
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/js-advanced/" class="nav-link">
+  JS高级程序设计-学习
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/js-design-pattern/" class="nav-link">
+  JS-设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/html+css/" class="nav-link router-link-active">
+  HTML+CSS
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/web-learning/vue/" class="nav-link">
+  Vue
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="计算机基础知识" class="dropdown-title"><span class="title">计算机基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="计算机基础知识" class="mobile-dropdown-title"><span class="title">计算机基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/computer-networks/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/data-structure/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/algorithm/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/basic-knowledge/design-pattern/" class="nav-link">
+  设计模式
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="文章" class="dropdown-title"><span class="title">文章</span> <span class="arrow down"></span></button> <button type="button" aria-label="文章" class="mobile-dropdown-title"><span class="title">文章</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/knowledge-database/article/js/" class="nav-link">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/knowledge-database/article/component-lib/" class="nav-link">
+  前端组件库
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/yemantou/knowledge-database" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>html+css</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/knowledge-database/web-learning/html+css/" aria-current="page" class="sidebar-link">HTML + CSS学习</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>CSS基础</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/knowledge-database/web-learning/html+css/flex.html" aria-current="page" class="active sidebar-link">flex 布局</a></li><li><a href="/knowledge-database/web-learning/html+css/css.html" class="sidebar-link">CSS基础</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>HTML基础</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/knowledge-database/web-learning/html+css/html.html" class="sidebar-link">HTML基础</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h3 id="flexbox-的两根轴线-主轴和交叉轴"><a href="#flexbox-的两根轴线-主轴和交叉轴" class="header-anchor">#</a> flexbox 的两根轴线（主轴和交叉轴）</h3> <p>主轴由<code>flex-direction</code>定义，另一根轴垂直于它。</p> <div class="custom-block tip"><p class="custom-block-title">提示</p> <p>flexbox 的特性是沿着主轴或者交叉轴对齐之中的元素。</p></div> <h4 id="主轴"><a href="#主轴" class="header-anchor">#</a> 主轴</h4> <p>由<code>flex-direction</code>定义，可取值4个：</p> <ul><li>row</li> <li>row-reverse</li> <li>column</li> <li>column-reverse</li></ul> <p>row 或者 row-reverse，主轴将沿着 inline 方向延伸。<br>
+column 或者 column-reverse，主轴会沿着上下方向延伸 — 也就是 block 排列的方向。</p> <h4 id="交叉轴"><a href="#交叉轴" class="header-anchor">#</a> 交叉轴</h4> <p>交叉轴垂直于主轴。</p> <h3 id="起始线和终止线"><a href="#起始线和终止线" class="header-anchor">#</a> 起始线和终止线</h3> <p>为什么不用上下左右来描述 flexbox 元素的方向：<br>
+flex-direction 是 row ，并且我是在书写英文，那么主轴的起始线是左边，终止线是右边；<br>
+书写阿拉伯文，那么主轴的起始线是右边，终止线是左边。<br>
+这两种情况下，交叉轴的起始线是 flex 容器的顶部，终止线是底部，因为两种语言都是水平书写模式。</p> <h3 id="flex-容器"><a href="#flex-容器" class="header-anchor">#</a> Flex 容器</h3> <p>把一个容器的 display 属性值改为 flex 或者 inline-flex，flex 容器中的所有 flex 元素都会有下列行为：</p> <ul><li>元素排列为一行 (flex-direction 属性的初始值是 row)；</li> <li>元素从主轴的起始线开始；</li> <li>元素不会在主维度方向拉伸，但是可以缩小；</li> <li>元素被拉伸来填充交叉轴大小；</li> <li>flex-basis（flex 元素在主轴方向上的初始大小） 属性为 auto；</li> <li>flex-wrap（flex 元素单行显示还是多行显示） 属性为 nowrap</li></ul> <h3 id="简写属性-flex-flow"><a href="#简写属性-flex-flow" class="header-anchor">#</a> 简写属性 flex-flow</h3> <p>是 flex-direction 和 flex-wrap 的简写，第一个指定的值为 flex-direction ，第二个指定的值为 flex-wrap。</p> <h3 id="可用空间-available-space"><a href="#可用空间-available-space" class="header-anchor">#</a> 可用空间 available space</h3> <p>假设在 1 个 500px 的容器中，我们有 3 个 100px 宽的元素，那么这 3 个元素需要占 300px 的宽，剩下 200px 的<strong>可用空间<code>available space</code></strong>。在默认情况下，flexbox 的行为会把这 200px 的空间留在最后一个元素的后面。<br>
+如果期望这些元素能自动地扩展去填充满剩下的空间，那么我们需要去控制可用空间在这几个元素间如何分配，这就是元素上的那些 flex 属性要做的事。</p> <h3 id="flex-元素上的属性"><a href="#flex-元素上的属性" class="header-anchor">#</a> flex 元素上的属性</h3> <ul><li><strong>flex-grow（负值无效，默认为 0）</strong><br>
+处理 flex 元素在主轴上增加空间的问题，设置<code>flex</code>元素按主轴方向的增长系数，会使该元素延展，并占据此方向轴上的可用空间（available space）。<br> <code>flex-grow</code>属性可以按比例分配空间。
+如果一共三个元素，第一个元素<code>flex-grow</code>值为 2，其他元素值为 1，则第一个元素将占有 2/4, 另外两个元素各占有1/4。</li> <li><strong>flex-shrink</strong><br>
+处理 flex 元素收缩的问题，可以赋予不同的值来控制 flex 元素收缩的程度，可以按比例收缩。</li> <li><strong>flex-basis</strong><br>
+flex 元素是在这个基准值的基础上缩放的。<br>
+定义了元素的空间大小，默认值是 auto。<br>
+如果没有给元素设定尺寸，flex-basis 的值采用元素内容的尺寸。</li> <li>order<br>
+定义元素的排列顺序。数值越小，排列越靠前，默认为0。</li> <li>align-self<br>
+允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。</li></ul> <h3 id="flex-属性的简写"><a href="#flex-属性的简写" class="header-anchor">#</a> Flex 属性的简写</h3> <p>Flex 简写形式允许你把三个数值按这个顺序书写 — flex-grow，flex-shrink，flex-basis。<br>
+即：<code>flex: flex-grow flex-shrink flex-basis;</code>。</p> <h4 id="几种预定义的值"><a href="#几种预定义的值" class="header-anchor">#</a> 几种预定义的值</h4> <ul><li>flex: initial<br>
+相当于 flex: 0 1 auto，素既不可以拉伸可以收缩</li> <li>flex: auto
+等同于 flex: 1 1 auto，元素既可以拉伸也可以收缩</li> <li>flex: none
+flex: 0 0 auto，元素既不能拉伸或者收缩</li> <li>flex: number<br>
+常看到的 flex: 1 或者 flex: 2 等等， 它相当于flex: 1 1 0。元素可以在flex-basis为 0 的基础上伸缩。</li></ul> <h3 id="元素间的对齐和空间分配-容器的属性"><a href="#元素间的对齐和空间分配-容器的属性" class="header-anchor">#</a> 元素间的对齐和空间分配（容器的属性）</h3> <ul><li>align-items<br>
+使元素在交叉轴方向对齐
+<ul><li>stretch（初始值）<br>
+拉伸来填满 flex 容器 —— 最高的元素定义了容器的高度</li> <li>flex-start<br>
+按 flex 容器的顶部对齐</li> <li>flex-end<br>
+flex 容器的下部对齐</li> <li>center<br>
+居中对齐</li></ul></li> <li>justify-content<br>
+使元素在主轴方向上对齐
+<ul><li>stretch<br>
+均匀排列每个元素<br>
+'auto'-sized 的元素会被拉伸以适应容器的大小</li> <li>flex-start（初始值）<br>
+从容器的起始线排列</li> <li>flex-end
+从终止线开始排列</li> <li>center
+在中间排列</li> <li>space-around
+使每个元素的左右空间相等</li> <li>space-between
+使元素之间间隔相等</li></ul></li> <li>align-content<br>
+如何沿着弹性盒子布局的纵轴和网格布局的主轴在内容项之间和周围分配空间。（即：行怎么排列）<br>
+该属性对单行弹性盒子模型无效。（即：带有 flex-wrap: nowrap）
+<ul><li>center<br>
+所有行朝向容器的中心填充。每行互相紧挨，相对于容器居中对齐。容器的垂直轴起点边和第一行的距离相等于容器的垂直轴终点边和最后一行的距离。</li> <li>start<br>
+所有行从容器的起始边缘开始填充</li> <li>end<br>
+所有行从容器的结束边缘开始填充。</li> <li>flex-start<br>
+所有行从垂直轴起点开始填充。第一行的垂直轴起点边和容器的垂直轴起点边对齐。接下来的每一行紧跟前一行。</li> <li>flex-end<br>
+所有行从垂直轴末尾开始填充。最后一行的垂直轴终点和容器的垂直轴终点对齐。同时所有后续行与前一个对齐。</li> <li>space-between<br>
+均匀分布项目项目在上下两端有一半大小的空间</li> <li>space-around<br>
+均匀分布项目项目周围有相等的空间</li></ul></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/knowledge-database/web-learning/html+css/" class="prev router-link-active">
+        HTML + CSS学习
+      </a></span> <span class="next"><a href="/knowledge-database/web-learning/html+css/css.html">
+        CSS基础
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/knowledge-database/assets/js/app.924c1f5f.js" defer></script><script src="/knowledge-database/assets/js/2.bbda75de.js" defer></script><script src="/knowledge-database/assets/js/68.8caf8132.js" defer></script>
+  </body>
+</html>
