@@ -1,4 +1,4 @@
-const webpack = require('webpack')
+const webpack = require('webpack');
 
 module.exports = {
   title: '胖虎拽的知识库',
@@ -12,9 +12,9 @@ module.exports = {
     nav: [
       {
         text: '文档指南',
-        link: '/guide/'
+        link: '/guide/',
       },
-      // { 
+      // {
       //   text: '自动构建',
       //   link: '/auto-build/'
       // },
@@ -23,101 +23,105 @@ module.exports = {
         items: [
           {
             text: '前端学习笔记',
-            link: '/note/web/'
+            link: '/note/web/',
           },
           {
             text: 'Vue学习笔记',
-            link: '/note/vue/'
+            link: '/note/vue/',
           },
           {
             text: 'React学习笔记',
-            link: '/note/react/'
+            link: '/note/react/',
           },
           {
             text: '后端学习笔记',
-            link: '/note/backend/'
+            link: '/note/backend/',
           },
           {
             text: '前端笔记（待被合并）',
-            link: '/note/review/'
+            link: '/note/review/',
           },
           {
             text: '读书笔记',
-            link: '/note/book/'
+            link: '/note/book/',
           },
-        ]
+        ],
       },
       {
         text: '前端学习',
         items: [
           {
             text: '你不知道的JS-学习',
-            link: '/web-learning/js/'
+            link: '/web-learning/js/',
           },
           {
             text: 'JS高级程序设计-学习',
-            link: '/web-learning/js-advanced/'
+            link: '/web-learning/js-advanced/',
           },
           {
             text: 'JS-设计模式',
-            link: '/web-learning/js-design-pattern/'
+            link: '/web-learning/js-design-pattern/',
           },
           {
             text: 'HTML+CSS',
-            link: '/web-learning/html+css/'
+            link: '/web-learning/html+css/',
           },
           {
             text: 'Vue',
-            link: '/web-learning/vue/'
-          }
-        ]
+            link: '/web-learning/vue/',
+          },
+          {
+            text: 'React',
+            link: '/web-learning/react/',
+          },
+        ],
       },
       {
         text: '计算机基础知识',
         items: [
           {
             text: '计算机网络',
-            link: '/basic-knowledge/computer-networks/'
+            link: '/basic-knowledge/computer-networks/',
           },
           {
             text: '数据结构',
-            link: '/basic-knowledge/data-structure/'
+            link: '/basic-knowledge/data-structure/',
           },
           {
             text: '算法',
-            link: '/basic-knowledge/algorithm/'
+            link: '/basic-knowledge/algorithm/',
           },
           {
             text: '设计模式',
-            link: '/basic-knowledge/design-pattern/'
-          }
-        ]
+            link: '/basic-knowledge/design-pattern/',
+          },
+        ],
       },
       {
         text: '文章',
         items: [
           {
             text: 'js',
-            link: '/article/js/'
+            link: '/article/js/',
           },
           {
             text: '前端组件库',
-            link: '/article/component-lib/'
-          }
-        ]
+            link: '/article/component-lib/',
+          },
+        ],
       },
       {
         text: 'GitHub',
-        link: 'https://github.com/yemantou/knowledge-database'
+        link: 'https://github.com/yemantou/knowledge-database',
       },
-    ]
+    ],
   },
   plugins: [
     [
       'vuepress-plugin-auto-sidebar',
       {
         sort: {
-          readmeFirstForce: true
+          readmeFirstForce: true,
         },
         title: {
           mode: 'titlecase',
@@ -125,31 +129,31 @@ module.exports = {
             '/guide/': '文档指南 🤖',
             '/auto-build/': '自动构建 🐭',
             '/web-learning/css/': 'CSS 🙂',
-            '/web-learning/js/': 'JS 🙃'
-          }
-        }
-      }
-    ]
+            '/web-learning/js/': 'JS 🙃',
+          },
+        },
+      },
+    ],
   ],
   configureWebpack: {
     resolve: {
       alias: {
-        '@assets': '/docs/.vuepress/assets'
-      }
+        '@assets': '/docs/.vuepress/assets',
+      },
     },
     node: {
       global: true,
-      process: true
+      process: true,
     },
     plugins: [
       new webpack.ProvidePlugin({
-        process: 'process/browser'
-      })
-    ]
+        process: 'process/browser',
+      }),
+    ],
   },
   locales: {
     '/': {
-      lang: 'zh-CN'
-    }
-  }
-}
+      lang: 'zh-CN',
+    },
+  },
+};
